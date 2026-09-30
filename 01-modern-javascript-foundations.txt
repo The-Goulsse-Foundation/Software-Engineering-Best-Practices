@@ -1,0 +1,51 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 1 - Modern JavaScript Foundations
+Target length: about 5 minutes (roughly 720 words at a relaxed speaking pace)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean, the show about writing JavaScript you won't be embarrassed by six months from now. I'm your host, and in this first episode we're starting where every good codebase starts: the foundations. Five habits, five minutes. Let's go.
+
+[SEGMENT 1 - Stop using var]
+
+Habit number one. Use const by default, let when you must reassign, and never var. This isn't fashion. Var is function-scoped and hoisted, which means a variable can quietly exist before you declare it, and can leak out of a block you thought contained it. Const and let are block-scoped, so a variable lives exactly where you wrote it and nowhere else.
+
+Here's the bonus. If you default to const, then every let in your code becomes a signal. A reader sees let and thinks, ah, this value changes over time, I should pay attention. You've turned a keyword into documentation.
+
+[SEGMENT 2 - Prefer immutability]
+
+Habit number two: treat data as immutable where you can. Const doesn't stop you from mutating an object. It only stops you from reassigning the variable. So the real discipline is this: instead of changing an array or object in place, create a new one. The spread operator, map, filter, and the newer non-mutating array methods like toSorted and toSpliced make this painless.
+
+Why bother? Because mutation is where surprising bugs hide. When one function quietly changes an object that another function is also holding, you get action at a distance. Nobody can reason about the code without reading everything. Immutable updates make data flow visible, and they make things like change detection in front-end frameworks work correctly.
+
+[SEGMENT 3 - Use ES modules]
+
+Habit number three. Use ES modules: import and export. Not global variables, not everything stuffed into one giant file, and not a tangle of script tags where order secretly matters. Modules give every file its own scope and force you to declare dependencies explicitly. That explicitness lets tools do tree shaking, lets editors jump to definitions, and lets a new teammate answer the question, where does this come from, in one click.
+
+A tip: prefer named exports over default exports. Named exports keep the same name across the codebase, make auto-import reliable, and make renames safe. Default exports let every importer invent a different name for the same thing, and that gets confusing fast.
+
+[SEGMENT 4 - Be strict about equality and null]
+
+Habit number four: use strict equality, triple equals, always. Double equals performs type coercion, and the rules are famously strange. Zero equals an empty string, an empty array equals false, and nobody remembers why. Triple equals compares value and type, and it does what it says.
+
+And meet two modern friends. Optional chaining, the question-mark-dot, lets you safely reach into nested data without a wall of and-and-and checks. Nullish coalescing, the double question mark, gives you a default only when a value is null or undefined. That matters because the older double-pipe default also replaces zero, false, and the empty string, which is often a real bug. If a user sets their volume to zero, you don't want your code deciding they meant fifty.
+
+[SEGMENT 5 - Small, pure functions]
+
+Habit number five, and it's the big one: write small functions that do one thing, and make them pure whenever possible. A pure function gives the same output for the same input and touches nothing outside itself. No reading the clock, no changing globals, no network calls hiding inside.
+
+Pure functions are trivially testable, you just call them and check the result. They're safe to reuse, safe to run in any order, and easy to reason about. You can't make everything pure, since real applications need side effects. The trick is to push side effects to the edges: keep your logic pure in the middle, and do the messy input and output at the boundary.
+
+[RECAP]
+
+Let's recap. One: const by default, let when needed, never var. Two: prefer immutable updates. Three: ES modules with named exports. Four: strict equality, optional chaining, and nullish coalescing. Five: small, pure functions with side effects pushed to the edges.
+
+None of these are glamorous, but together they remove a huge category of bugs before you've written a single test.
+
+[OUTRO]
+
+Your homework: pick one file in your project and search for var and double equals. Fix just those. Small wins compound.
+
+Next time, we'll talk about naming and readability, the cheapest way to make a codebase better. Thanks for listening, and until then, ship it clean.
+
+[OUTRO MUSIC - fade out]

@@ -1,0 +1,53 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 8 - Dependency Management and Supply Chain Safety
+Target length: about 5 minutes (roughly 700 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today: dependencies. The JavaScript ecosystem is a gift and a liability. A typical project pulls in hundreds or thousands of packages, most of which you never chose directly. Every one is code you're running, written by someone you've never met. Let's manage that responsibly.
+
+[SEGMENT 1 - Choose dependencies deliberately]
+
+Before adding a package, ask a few questions. Do I really need it, or is it a dozen lines I could write? Is it actively maintained, with recent releases and responsive issue handling? Is it widely used and well documented? How large is it, and how many dependencies does it drag in?
+
+The infamous tiny-package incidents, where one small library disappeared or broke and took thousands of projects with it, taught the community a lesson. Every dependency is a commitment. Prefer well-established libraries for hard problems like dates, cryptography, and parsing, and prefer the platform's built-in features for simple ones. Modern JavaScript and Node cover a lot of what used to require packages.
+
+[SEGMENT 2 - Lockfiles and reproducibility]
+
+Always commit your lockfile. It records the exact version of every package in your tree, including transitive ones, so that every developer and every CI run installs the same thing. Without it, two installs a week apart can produce different code, and you get the classic bug that appears only on a Tuesday.
+
+In CI and production builds, use the clean-install command that installs strictly from the lockfile and fails if it's out of sync, rather than the ordinary install that may update it. Reproducible builds are a foundation of reliability.
+
+[SEGMENT 3 - Versioning and updates]
+
+Understand semantic versioning: major, minor, patch. Patch releases fix bugs, minor releases add features compatibly, and major releases may break things. The caret range in your manifest accepts minor and patch updates automatically, which is convenient, but it relies on maintainers honoring the contract, and not everyone does.
+
+Don't let dependencies rot. Falling two years behind makes upgrading a nightmare, and it leaves known vulnerabilities in place. Use an automated update bot to open small, regular pull requests, and let your test suite tell you whether each is safe. Many small upgrades beat one giant, terrifying one.
+
+Read changelogs for major bumps, and upgrade the risky ones in isolation so if something breaks, you know exactly what did it.
+
+[SEGMENT 4 - Auditing for vulnerabilities]
+
+Run a vulnerability audit regularly, and in CI. Your package manager has one built in, and there are dedicated scanning services too. But apply judgment: not every advisory affects you. A vulnerability in a development-only tool, or in a code path you never call, may be low risk. Triage by severity and reachability, fix the serious ones fast, and document any you deliberately accept.
+
+Separate dependencies from dev dependencies properly, so build tools and test libraries don't ship to production, both for size and for reducing attack surface.
+
+[SEGMENT 5 - Supply chain attacks]
+
+Now the scary part: attackers target the supply chain directly. Typosquatting, where a malicious package has a name one character off from a popular one. Hijacked maintainer accounts publishing poisoned releases. Install scripts that run arbitrary code the moment you install.
+
+Defenses: double-check package names before installing. Enable two-factor authentication on your own registry accounts, and consider trusted publishing with provenance for packages you release. Consider disabling install scripts by default and allowing them only for packages that truly need them. Use a private registry or proxy to control what enters your organization, and consider a short delay before adopting brand-new releases, since malicious versions are often caught within days.
+
+[SEGMENT 6 - Keep the tree small]
+
+Finally, prune. Periodically remove unused dependencies, and check for duplicates of the same library at different versions. A smaller tree means faster installs, smaller bundles, and fewer things that can break or be attacked. Bundle analysis tools show what's heavy, and often a single import swap saves hundreds of kilobytes.
+
+[RECAP]
+
+Recap: choose dependencies deliberately, commit your lockfile, update continuously in small steps, audit with judgment, defend against supply chain attacks, and keep the tree lean.
+
+[OUTRO]
+
+Your task: run an audit and remove one dependency you no longer use. Next episode: performance. Ship it clean.
+
+[OUTRO MUSIC - fade out]

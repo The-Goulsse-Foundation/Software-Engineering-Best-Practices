@@ -1,0 +1,55 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 7 - Tooling: Linting, Formatting, and CI
+Target length: about 5 minutes (roughly 700 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today we automate the boring parts. A good rule of thumb: anything you'd remind a teammate about in code review should be enforced by a machine instead. Let's build that safety net.
+
+[SEGMENT 1 - Linting]
+
+Start with a linter. ESLint analyzes your code without running it and flags likely bugs: unused variables, unreachable code, missing awaits, accidental assignments in conditions. It also enforces team rules and catches patterns that are legal but dangerous.
+
+Start with a recommended baseline configuration rather than inventing hundreds of rules. Add plugins for your stack, such as React hooks rules or Node-specific checks, and the TypeScript-aware rules if you use TypeScript. Those catch things like promises that are never awaited, which the compiler alone won't.
+
+Two tips. Treat warnings as noise: either a rule is worth failing the build, or it's not worth enabling. And when you must disable a rule for a line, add a short reason. Future you will want to know why.
+
+[SEGMENT 2 - Formatting]
+
+Next, an automatic formatter, most commonly Prettier. The point isn't that its style is perfect; it's that the debate is over. No more arguing about semicolons or line breaks, no more noisy diffs where someone's editor reformatted a file. Everyone's code looks the same, and reviewers focus on substance.
+
+Keep linting and formatting separate in your mind. The linter finds problems; the formatter handles layout. Configure them so they don't fight each other, and set your editor to format on save so it just happens.
+
+[SEGMENT 3 - Git hooks]
+
+Now shift checks left. Use a Git hooks tool with a staged-files runner so that, on every commit, the linter and formatter run only on the files you changed. It's fast, and it stops trivial mistakes before they ever reach the repository.
+
+But remember: hooks are a convenience, not a guarantee. Developers can bypass them, so they can never be your only line of defense. That's what CI is for.
+
+[SEGMENT 4 - Continuous integration]
+
+Continuous integration is your source of truth. On every pull request, automatically run install, lint, type check, tests, and build. If any step fails, the merge is blocked. That's it, and it's transformative: the main branch stays healthy, and nobody has to wonder whether it works on a clean machine.
+
+Make the pipeline fast, because slow pipelines get ignored. Cache dependencies, run independent jobs in parallel, and run the quick checks first so failures surface in seconds. Use a lockfile and a clean, reproducible install command so CI matches what developers get locally.
+
+Pin your Node version, using a version file in the repo, so everyone, including CI, runs the same runtime. Nothing wastes time like a bug that exists only on one person's machine.
+
+[SEGMENT 5 - Continuous delivery and environments]
+
+Extend the pipeline to deployment. Automate deploys from the main branch, ideally with preview environments for pull requests so reviewers can click a live link instead of imagining the change. Keep configuration in environment variables, never in code, and make deploys boring and reversible: know how to roll back in one step.
+
+Feature flags help too. They let you merge unfinished work safely, release gradually to a percentage of users, and switch off a misbehaving feature without a redeploy.
+
+[SEGMENT 6 - Scripts and documentation]
+
+A small but valuable habit: give your repo consistent script names, like dev, test, lint, and build, so a newcomer can get running in minutes. Put setup instructions in the readme and test them on a fresh machine now and then. If onboarding takes a week of tribal knowledge, that's a tooling bug.
+
+[RECAP]
+
+Recap: lint for bugs, format for consistency, use pre-commit hooks for fast feedback, enforce everything in CI, pin your runtime, automate deployments, and keep scripts and docs friendly.
+
+[OUTRO]
+
+This week, add one check to CI that you currently rely on humans to remember. Next episode: dependencies and supply chain security. Until then, ship it clean.
+
+[OUTRO MUSIC - fade out]

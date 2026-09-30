@@ -1,0 +1,57 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 2 - Naming and Readable Code
+Target length: about 5 minutes (roughly 700 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome back to Ship It Clean. Today's topic costs nothing, needs no tools, and improves every codebase it touches: naming and readability. There's an old saying that code is read far more often than it's written. So let's optimize for the reader.
+
+[SEGMENT 1 - Names should reveal intent]
+
+The first rule of naming: a good name answers why this exists, what it does, and how it's used, so the reader doesn't need a comment. Compare a variable called d with one called daysSinceLastLogin. The first makes you hunt. The second makes you nod and move on.
+
+Avoid vague names like data, info, temp, handle, or manager. If a function is called processData, ask, process it how? Validate it? Transform it? Save it? Call it validateOrder or normalizeAddress and the mystery is gone.
+
+Length should match scope. A loop counter that lives for three lines can be a short name. A value that's exported across the app deserves a fuller, more precise one.
+
+[SEGMENT 2 - Conventions that carry meaning]
+
+JavaScript has strong naming conventions, and following them is a free communication channel. Variables and functions use camelCase. Classes and components use PascalCase. True constants, like a maximum retry count, use uppercase with underscores.
+
+Then add your own team conventions. Booleans should read like questions: isLoading, hasPermission, canSubmit. Functions should be verbs: fetchUser, calculateTotal, renderHeader. Collections should be plural: users, not userList or userData. When conventions are consistent, a reader can guess what something is before even looking at it.
+
+[SEGMENT 3 - Functions that fit in your head]
+
+Now structure. A function should do one thing, at one level of abstraction. If you find yourself writing a comment that says, now do the second part, that's a function boundary waiting to be named. Extract it, and let the function name replace the comment.
+
+Keep parameter lists short. Once you have four or five positional arguments, call sites become unreadable, because nobody remembers whether the third argument was the timeout or the retry count. Switch to a single options object with destructuring, so the call site reads like documentation.
+
+And use early returns. Instead of nesting if inside if inside if, handle the bad cases first and return. The happy path then runs down the left edge of the screen, flat and easy to follow. Deep indentation is a smell. It usually means a function is doing too much.
+
+[SEGMENT 4 - Kill magic values]
+
+Next, magic numbers and strings. If you see the number eighty-six thousand four hundred in the middle of a calculation, nobody knows what it is. Name it: SECONDS_PER_DAY. If the string pending appears in twelve files, one typo will cause a bug that no tool catches. Define it once, in a constant or a frozen object, and import it.
+
+The same goes for booleans in function calls. A call like sendEmail, true, false, true tells you nothing. Pass an options object, sendEmail with a named flag for urgent, and the call explains itself.
+
+[SEGMENT 5 - Comments: explain why, not what]
+
+Comments deserve a mention. A comment that restates the code, like a line saying increment i above i plus plus, is just noise that will eventually lie when the code changes. Good comments explain why: why this odd workaround exists, which browser bug it avoids, what business rule this encodes, or what tradeoff you chose.
+
+If you need a comment to explain what a block does, try renaming or extracting first. Then keep the comments for the things code can't say. A short link to an issue or a decision record is often the most valuable comment in the file.
+
+[SEGMENT 6 - Let tools handle formatting]
+
+Finally, don't spend human attention on formatting. Tabs, spaces, semicolons, quote style: pick a standard, automate it with a formatter, and never discuss it in code review again. Save your reviewers' brains for logic and design.
+
+[RECAP]
+
+To recap: name things for intent, follow conventions, keep functions small and focused, return early, replace magic values with names, comment the why, and automate formatting.
+
+[OUTRO]
+
+Try this: open a function you wrote a month ago and see whether you can understand it in thirty seconds. If not, rename one thing and extract one thing. That's the whole exercise.
+
+Next episode, we tackle asynchronous JavaScript: promises, async and await, and the mistakes everyone makes. See you then, and ship it clean.
+
+[OUTRO MUSIC - fade out]

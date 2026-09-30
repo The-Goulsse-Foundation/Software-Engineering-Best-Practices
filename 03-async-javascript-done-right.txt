@@ -1,0 +1,55 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 3 - Async JavaScript Done Right
+Target length: about 5 minutes (roughly 720 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Hello and welcome to Ship It Clean. Today: asynchronous JavaScript. It's the part of the language that trips up beginners and veterans alike, because it's where time enters the picture. Let's make it boring, which is the highest compliment for async code.
+
+[SEGMENT 1 - Understand the event loop, briefly]
+
+First, a mental model. JavaScript runs your code on a single thread. When you start something slow, like a network request, the runtime hands it off and keeps going. When the result is ready, a callback or promise continuation gets queued to run. That's the event loop.
+
+Two consequences matter. One: a long synchronous loop blocks everything, including clicks and rendering in the browser or other requests on a server. Two: async doesn't mean parallel. It means waiting without blocking. Keep those in mind and most async puzzles become manageable.
+
+[SEGMENT 2 - Prefer async and await]
+
+Practice one: prefer async and await over long promise chains and definitely over nested callbacks. Async and await lets you write asynchronous code that reads top to bottom like synchronous code, and it works naturally with try and catch and ordinary loops.
+
+That doesn't mean promises are gone. Under the hood, an async function always returns a promise. Understanding that helps you compose them, and there's one place chains still shine: short transformations like fetch then parse, where a compact chain reads well.
+
+[SEGMENT 3 - Don't serialize what can run together]
+
+Practice two: run independent work concurrently. A classic performance bug is awaiting three unrelated requests one after another, so total time is the sum of all three. If the requests don't depend on each other, start them all and await together with Promise.all. Total time becomes the slowest one.
+
+Choose the right combinator. Promise.all fails fast: if any promise rejects, the whole thing rejects. Promise.allSettled waits for everything and reports each outcome, which is perfect when partial success is acceptable, like loading optional dashboard widgets. Promise.race resolves with the first to settle, and Promise.any with the first to succeed. Knowing these four is a superpower.
+
+Also, be careful with await inside a for loop. Sometimes sequential is exactly what you want, for ordering or rate limiting. But if it's accidental, you've silently made your code slower.
+
+[SEGMENT 4 - Always handle rejections]
+
+Practice three: never leave a promise floating. A rejected promise with no handler becomes an unhandled rejection, and in modern Node, that can crash your process. Every promise should be awaited, returned, or explicitly handled.
+
+That includes the fire-and-forget case. If you deliberately don't await something, attach a catch that logs the error. And a warning about a subtle trap: an async function passed to something that doesn't expect a promise, like a forEach callback or an event listener, will happily return a promise that nobody watches. Errors vanish. Use a for-of loop, or map with Promise.all, instead of forEach when you need to await.
+
+[SEGMENT 5 - Timeouts and cancellation]
+
+Practice four: network calls need timeouts and cancellation. By default, a request may wait far longer than any user will. Use AbortController to cancel a fetch, and newer helpers like AbortSignal timeout make it a one-liner. Pass the signal down, so that when a user navigates away or a request times out, you stop doing work nobody wants.
+
+For retries, add exponential backoff with jitter, and only retry operations that are safe to repeat, meaning idempotent ones. Retrying a payment blindly is a story that ends in a support ticket.
+
+[SEGMENT 6 - Avoid race conditions]
+
+Practice five: beware races. Picture a search box: the user types, requests fire, and responses come back out of order. The slow response for an old query arrives last and overwrites the correct results. The fix is to cancel the previous request, or to ignore any response that isn't for the latest query. Whenever an async result updates shared state, ask, could an older call finish after a newer one?
+
+[RECAP]
+
+Recap: understand the event loop, use async and await, run independent work with Promise.all or its cousins, handle every rejection, add timeouts and cancellation with AbortController, and guard against out-of-order responses.
+
+[OUTRO]
+
+Your challenge this week: search your codebase for await inside loops and for forEach with async callbacks. Each one is either a deliberate choice or a bug.
+
+Next time: error handling, and how to fail gracefully instead of mysteriously. Until then, ship it clean.
+
+[OUTRO MUSIC - fade out]

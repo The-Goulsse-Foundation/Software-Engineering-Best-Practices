@@ -1,0 +1,55 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 4 - Error Handling and Defensive Programming
+Target length: about 5 minutes (roughly 710 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today we talk about the thing that separates hobby projects from production software: what happens when things go wrong. Because they will. Networks drop, users type nonsense, and third-party APIs change their minds. Let's build code that fails well.
+
+[SEGMENT 1 - Throw real errors]
+
+Rule one: throw Error objects, not strings or plain objects. An Error captures a stack trace, which is the single most valuable clue when you're debugging at two in the morning. Throwing the string something broke gives you nothing to trace.
+
+Go a step further and create custom error classes for meaningful categories: ValidationError, NotFoundError, PermissionError. Then callers can check the type and respond differently. A validation problem becomes a friendly message; an unexpected failure becomes a logged incident. And use the cause option when wrapping errors, so the original failure isn't lost as it travels up the stack.
+
+[SEGMENT 2 - Catch where you can act]
+
+Rule two: catch an error only where you can do something useful with it. Recover, retry, translate it into a user message, or add context and rethrow. What you must never do is swallow it with an empty catch block. A silent catch turns a loud, fixable bug into a quiet, mysterious one.
+
+Similarly, don't catch just to log and then continue as if nothing happened, unless continuing is actually correct. Let errors bubble up to a boundary that knows how to handle them: a top-level middleware on the server, or an error boundary in your UI framework.
+
+[SEGMENT 3 - Validate at the boundaries]
+
+Rule three: validate data where it enters your system. Anything from outside is untrusted: request bodies, query strings, environment variables, local storage, even responses from other services. Parse and validate it once at the edge, using a schema library, and convert it into a shape your internal code can trust.
+
+This idea is sometimes called parse, don't validate. Instead of checking a value and passing the raw thing along, transform it into a known-good structure. After that, the rest of your code doesn't need paranoid checks scattered everywhere. Fewer checks, more confidence.
+
+[SEGMENT 4 - Fail fast, and handle the unhappy paths]
+
+Rule four: fail fast. If a required configuration value is missing, crash at startup with a clear message rather than limping along and failing mysteriously on the first request. If a function receives an argument that makes no sense, throw immediately rather than letting a bad value travel deep into the system.
+
+And design for the unhappy paths. For every network call, ask: what does the user see while it loads, when it fails, and when it returns nothing? Empty states and error states are features, not afterthoughts. So many bugs live in the branch nobody looked at.
+
+[SEGMENT 5 - Make failures observable]
+
+Rule five: if you can't see failures, you can't fix them. Log errors with context: what operation, which user or request identifier, and the relevant inputs, taking care never to log secrets or personal data. Use structured logs, meaning JSON with consistent fields, so they can be searched and filtered.
+
+Add error monitoring, something that captures unhandled exceptions and rejections and groups them. And in Node, register handlers for unhandled rejections and uncaught exceptions, log them, and shut down gracefully, because after an uncaught exception, your process is in an unknown state.
+
+Also, give users a correlation or request ID they can quote to support. It turns a vague complaint into a five-second lookup.
+
+[SEGMENT 6 - Graceful degradation]
+
+Finally, degrade gracefully. If a recommendations service is down, show the page without recommendations, not an error screen. Use timeouts, retries with backoff, and circuit breakers so one failing dependency doesn't drag down everything else. Decide ahead of time which features are essential and which are nice to have.
+
+[RECAP]
+
+Recap: throw real Errors with custom types and causes, catch only where you can act, validate at the boundaries, fail fast, log and monitor everything with context, and degrade gracefully.
+
+[OUTRO]
+
+Exercise: grep your codebase for empty catch blocks. Each one deserves either a real handler or a comment explaining why ignoring is safe.
+
+Next episode: testing, and how to get confidence without a thousand brittle tests. Thanks for listening, and ship it clean.
+
+[OUTRO MUSIC - fade out]

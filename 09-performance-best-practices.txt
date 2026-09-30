@@ -1,0 +1,49 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 9 - Performance Without the Guesswork
+Target length: about 5 minutes (roughly 710 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today: performance. There's a famous warning that premature optimization is the root of much evil. The lesson isn't to ignore performance; it's to be systematic. Measure first, fix the biggest problem, measure again. Let's walk through how.
+
+[SEGMENT 1 - Measure before optimizing]
+
+Rule one: never optimize on a hunch. Use the browser's performance profiler, network panel, and Lighthouse for front-end work. In Node, use the built-in profiler and flame graphs to see where time really goes. Very often the bottleneck is somewhere you'd never guess, and the code you were about to micro-tune accounts for one percent of the time.
+
+Define what matters for users. On the web, that's the core web vitals: how fast the main content appears, how quickly the page responds to input, and how stable the layout is. Set performance budgets, like a maximum bundle size, and check them in CI so regressions get caught early.
+
+[SEGMENT 2 - Ship less JavaScript]
+
+The fastest code is code that never downloads or runs. JavaScript is the most expensive asset per byte, because the browser must download, parse, compile, and execute it. So trim the bundle. Use code splitting to load a route's code only when the user visits it. Lazy-load heavy components, like charts or editors, until needed. Rely on tree shaking, which works best with ES modules and side-effect-free packages, to drop unused exports.
+
+Audit heavy dependencies with a bundle analyzer. Replacing a giant utility library with a few native calls, or importing a single function rather than the whole package, often produces the biggest wins for the least effort. Also compress assets and serve them through a CDN with proper caching headers.
+
+[SEGMENT 3 - Don't block the main thread]
+
+The browser's main thread handles rendering and input. A long-running script freezes the page. If you have heavy computation, move it to a web worker so the interface stays responsive. Break long tasks into smaller chunks and yield back to the browser between them. In Node, the same principle applies: a CPU-heavy loop blocks every other request, so offload it to worker threads or a separate service.
+
+Also, avoid layout thrashing, where you alternate between reading layout properties and writing styles in a loop, forcing the browser to recalculate layout repeatedly. Batch your reads together, then your writes.
+
+[SEGMENT 4 - Be smart about rendering and data]
+
+For user interfaces, avoid unnecessary work. Don't re-render components whose inputs haven't changed, and lean on memoization where profiling shows a real cost, not everywhere by default, since memoization has its own overhead. Virtualize long lists so only visible rows exist in the page. Debounce or throttle noisy events like scrolling and typing.
+
+For data, cache aggressively but safely. Fetch what you need rather than everything, paginate large results, and avoid the waterfall where one request waits for another unnecessarily. Prefetch what the user will probably need next. On servers, watch for the N plus one query problem, where a loop triggers a database call per item instead of one batched query.
+
+[SEGMENT 5 - Choose the right data structures]
+
+Algorithmic choices matter more than micro-tricks. Searching an array for every item in another array is quadratic; put one into a Map or Set and it becomes linear. Use Sets for membership checks and Maps for keyed lookups. Avoid repeated string concatenation in hot loops when building large output; collect parts and join once. These changes rarely hurt readability and can turn seconds into milliseconds.
+
+[SEGMENT 6 - Memory]
+
+Finally, memory. Leaks in JavaScript usually come from things that stay referenced longer than intended: event listeners never removed, timers never cleared, growing caches with no eviction, or closures holding large objects. Clean up in teardown code, use weak references for caches keyed by objects where appropriate, and bound the size of any cache. Heap snapshots in developer tools help you find what's accumulating.
+
+[RECAP]
+
+Recap: measure first, ship less code, keep the main thread free, avoid unnecessary rendering and requests, use the right data structures, and watch for memory leaks.
+
+[OUTRO]
+
+Your task: run a profile on your slowest page or endpoint and fix only the top item. Next episode: security. Ship it clean.
+
+[OUTRO MUSIC - fade out]

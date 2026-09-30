@@ -1,0 +1,55 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 10 - Security Essentials for JavaScript Developers
+Target length: about 5 minutes (roughly 710 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today: security. You don't need to be a security expert to prevent the majority of real-world attacks. You need a handful of habits, applied consistently. One caveat: this is a starting point, and serious systems deserve dedicated security review.
+
+[SEGMENT 1 - Never trust input]
+
+The core principle: all input is hostile until proven otherwise. That includes form fields, URL parameters, headers, cookies, uploaded files, and data from other services. Validate on the server, always. Client-side validation is a user-experience nicety; an attacker simply skips your browser and sends requests directly.
+
+Validate type, length, format, and range with a schema, and prefer allow-lists, defining what's permitted, over block-lists that try to enumerate what's bad. Then handle the output side as carefully as the input side, which brings us to injection.
+
+[SEGMENT 2 - Cross-site scripting]
+
+Cross-site scripting, or XSS, happens when untrusted data ends up executed as code in a user's browser. Modern frameworks escape output by default, which is a huge protection, so the danger lies in the escape hatches: setting inner HTML directly, or using a framework's raw-HTML feature, or building HTML through string concatenation.
+
+Avoid those with user-provided content. When you truly must render rich text, sanitize it with a well-maintained sanitizer library. Also avoid evaluating strings as code, meaning eval and its cousins, and be careful with user-controlled URLs, since a javascript-scheme link can execute code when clicked.
+
+Add a Content Security Policy header as a second layer. It restricts where scripts can load from and can neutralize many injection attempts even when a bug slips through.
+
+[SEGMENT 3 - Injection on the server]
+
+On the server, the classic is SQL injection: building queries by pasting user input into a string. The fix is simple and non-negotiable: use parameterized queries or a query builder or ORM that does it for you. The same idea applies to NoSQL queries, shell commands, and file paths.
+
+Never pass user input into a shell command. If you must run a process, pass arguments as an array rather than a single command string, and validate strictly. For file paths, guard against path traversal, where dot-dot-slash sequences escape the intended directory, by resolving the path and confirming it stays inside the allowed folder.
+
+[SEGMENT 4 - Authentication and sessions]
+
+Don't invent your own authentication if you can avoid it. Use established libraries or identity providers. Hash passwords with a slow, purpose-built algorithm like Argon2, bcrypt, or scrypt, never with a fast hash and never stored in plain text.
+
+Store session tokens in cookies marked HttpOnly, Secure, and with a suitable SameSite setting, so scripts can't read them and they aren't sent cross-site. That also blunts cross-site request forgery, and for sensitive actions, add CSRF tokens. Keeping tokens out of local storage removes an easy target for XSS. Add rate limiting on login and other sensitive endpoints, and offer multi-factor authentication.
+
+Check authorization on every request, on the server, for every resource. It's not enough to know who the user is; you must confirm they're allowed to touch this specific record. Missing that check is one of the most common serious flaws.
+
+[SEGMENT 5 - Secrets and configuration]
+
+Never commit secrets, meaning API keys, passwords, and tokens, to your repository, even a private one. Load them from environment variables or a secrets manager. Add secret scanning to your pipeline, and if a secret ever leaks, rotate it immediately; deleting the commit isn't enough, because it may already be copied.
+
+Remember that anything shipped to the browser is public. An API key embedded in front-end code is not a secret. Keep sensitive operations on the server.
+
+[SEGMENT 6 - Defense in depth]
+
+Layer your defenses. Serve everything over HTTPS and enable HSTS. Set security headers. Use the principle of least privilege, giving services and database users only the permissions they need. Keep dependencies patched, as we discussed last time. Keep error messages to users generic, while logging the details privately, so you don't leak stack traces or internals to attackers.
+
+[RECAP]
+
+Recap: validate all input on the server, prevent XSS by avoiding raw HTML, use parameterized queries, do authentication and sessions properly, check authorization everywhere, protect your secrets, and layer your defenses.
+
+[OUTRO]
+
+Your task: search your project for inner HTML and eval, and check every hit. Next episode: code reviews and Git habits. Ship it clean.
+
+[OUTRO MUSIC - fade out]

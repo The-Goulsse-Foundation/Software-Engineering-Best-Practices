@@ -1,0 +1,53 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 12 - Architecture and State Management
+Target length: about 5 minutes (roughly 710 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to the final episode of Ship It Clean. We've covered code-level habits, tooling, and teamwork. Today we zoom out: how to structure a JavaScript application so it stays understandable as it grows. Because most projects don't fail from one bad function; they collapse under accumulated tangles.
+
+[SEGMENT 1 - Separation of concerns]
+
+The founding principle is separation of concerns: each part of the system has one clear responsibility. In practice, separate your business logic from your presentation, and your presentation from your data access. The rules of your domain, such as how a discount is calculated or when an order can be cancelled, should live in plain functions and modules that know nothing about the user interface or the database.
+
+Why does that matter? Testability, for one: pure logic tests are fast and simple. Flexibility, for another: you can swap a framework or a database without rewriting the rules. And clarity: when a bug appears in pricing, you know exactly where to look.
+
+[SEGMENT 2 - Organize by feature]
+
+Organize folders by feature or domain rather than by file type. A structure with a folder for orders, another for users, and another for billing, each containing its own components, logic, and tests, keeps related code together. Contrast that with one giant components folder, one giant utilities folder, and one giant hooks folder, where changing a feature means touching six distant places.
+
+Give each module a small public surface: an index file that exports only what others should use, and keep the rest internal. Enforce boundaries, so the billing module can't reach into the guts of the orders module. Some lint rules can even check import boundaries automatically.
+
+[SEGMENT 3 - Manage dependencies between modules]
+
+Watch the direction of dependencies. Core domain logic should not depend on outer details like web frameworks or database drivers; instead, the outer layers depend on the core. Passing dependencies in, called dependency injection, is a simple way to achieve this: a function receives the database client or the clock as a parameter rather than importing it directly. That makes testing easy and coupling loose.
+
+And avoid circular imports, where module A imports B and B imports A. They cause subtle initialization bugs and signal that responsibilities are tangled. If you find one, extract the shared piece into a third module.
+
+[SEGMENT 4 - State management principles]
+
+Now, state, the source of many headaches. First principle: keep state as local as possible. Data that only one component needs belongs in that component. Lift state up only when siblings truly must share it, and reach for global stores only for genuinely global concerns, like the signed-in user or theme.
+
+Second: distinguish kinds of state. Server state, data fetched from an API, has its own concerns: caching, refetching, invalidation, loading and error status. Dedicated data-fetching libraries handle these well, and using them saves you from reimplementing a cache badly in your global store. Then there's interface state, like whether a menu is open, and form state, and URL state. The address bar is state too; putting filters and pagination in the URL makes pages shareable and the back button work.
+
+Third: have a single source of truth, and derive everything else. If you can compute a value from existing state, don't store a copy. Duplicated state drifts out of sync, and then you're debugging why two numbers on the screen disagree.
+
+[SEGMENT 5 - Predictable updates]
+
+Make state changes predictable. Update state immutably, funnel changes through well-named functions or actions, and keep the transitions explicit. When state can be one of several modes, model it as a state machine or a discriminated union, so impossible combinations, like loading and error at the same time, simply can't occur.
+
+[SEGMENT 6 - Keep it simple and evolve]
+
+A last piece of wisdom: don't over-engineer. Adding layers, abstractions, and patterns before you need them creates complexity with no benefit. Duplication is often cheaper than the wrong abstraction. Wait until you see a pattern three times, then extract it. Start simple, keep boundaries clean, and let the architecture evolve as real requirements appear. Refactor continuously in small steps, supported by your tests, so the design never has to be rescued in one heroic rewrite.
+
+[RECAP - and series wrap-up]
+
+Recap for today: separate concerns, organize by feature, control dependency direction, keep state local, distinguish server and interface state, derive rather than duplicate, model states explicitly, and stay simple.
+
+Across the series: strong foundations, readable names, sound async, graceful errors, meaningful tests, useful types, automated tooling, careful dependencies, measured performance, security habits, healthy review culture, and clean architecture. None of them require genius; they require consistency.
+
+[OUTRO]
+
+Thank you for listening to Ship It Clean. Pick one habit from this series and apply it tomorrow, then another next week. Small improvements compound into a codebase you're proud of. Until next time, keep learning, keep refactoring, and ship it clean.
+
+[OUTRO MUSIC - fade out]

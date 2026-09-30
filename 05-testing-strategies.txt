@@ -1,0 +1,55 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 5 - Testing Strategies That Actually Help
+Target length: about 5 minutes (roughly 720 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today: testing. Not the religious debate, just what works. The goal of tests isn't a coverage number. The goal is the confidence to change code without fear. Let's talk about how to get there.
+
+[SEGMENT 1 - The testing shape]
+
+Think in layers. At the bottom, unit tests: fast, focused checks of a single function or module. In the middle, integration tests: several pieces working together, like your API handler plus a real or in-memory database. At the top, end-to-end tests: a real browser clicking through real flows.
+
+You want many unit tests, a healthy number of integration tests, and a few critical end-to-end tests. Why the shape? Speed and stability. Unit tests run in milliseconds and rarely flake. End-to-end tests are slow and fragile but catch what nothing else can. Some teams argue for more integration tests, especially in front-end work, because they resemble how software is really used. Either way, the principle holds: match the test to the risk.
+
+[SEGMENT 2 - Test behavior, not implementation]
+
+The most important rule: test what the code does, not how it does it. If you rename a private helper, refactor a loop into a reduce, or swap one library for another, and tests break even though behavior is unchanged, those tests are a tax, not a safety net.
+
+So assert on outputs and observable effects. For a UI, query the way a user would: by role, label, and visible text, instead of by CSS class or component internals. For a function, give inputs and check results. When your tests describe behavior, refactoring becomes safe, and that's the entire point.
+
+[SEGMENT 3 - Structure each test clearly]
+
+Use the arrange, act, assert pattern. Set up the situation, perform one action, check the result. Keep each test focused on one behavior, and name it like a sentence: returns an empty list when the user has no orders. When a test fails, the name alone should tell you what broke.
+
+Avoid logic in tests. Loops and conditionals in a test mean you now need tests for your tests. And keep tests independent: no test should rely on another having run first, and no shared mutable state should leak between them. Random order should always pass.
+
+[SEGMENT 4 - Mock sparingly]
+
+Mocks are useful and dangerous. Mock at the boundaries, like network calls, clocks, and randomness, so tests are deterministic. But mock too much and you're testing your mocks, not your code. A test where every collaborator is faked can pass while the real system is broken.
+
+Prefer fakes and real implementations where cheap: an in-memory repository, a local test database, a mock service worker that intercepts HTTP. For time, use fake timers rather than sleeping. And never let tests hit real external services; that's how you get flaky builds and surprise bills.
+
+[SEGMENT 5 - Tests for bugs, and when to use TDD]
+
+Here's a great habit: when you find a bug, first write a failing test that reproduces it, then fix the bug. Now it can never silently return. That's regression testing at its cheapest.
+
+Test-driven development, writing the test first, is a tool, not a commandment. It shines for well-defined logic, like parsing, calculations, and business rules, because it forces you to think about the interface before the implementation. For exploratory UI work, writing tests after might be more natural. Use the tool where it helps.
+
+[SEGMENT 6 - Coverage and flakiness]
+
+About coverage: it tells you what's definitely untested, not what's well tested. A line can execute without any meaningful assertion. Use coverage to spot blind spots in critical code, but don't chase a hundred percent. Chasing it produces low-value tests.
+
+And treat flaky tests as bugs. A test that fails randomly trains the team to ignore red builds, and then real failures slip through. Fix it, quarantine it, or delete it, but don't tolerate it.
+
+Finally, run tests automatically on every pull request. A test nobody runs protects nothing.
+
+[RECAP]
+
+Recap: balance unit, integration, and end-to-end tests; test behavior, not implementation; structure tests clearly; mock only at boundaries; write a failing test for every bug; use coverage as a flashlight, not a goal; and stamp out flakiness.
+
+[OUTRO]
+
+This week, find your slowest or flakiest test and either fix it or delete it. Next episode: types with TypeScript and JSDoc. Until then, ship it clean.
+
+[OUTRO MUSIC - fade out]

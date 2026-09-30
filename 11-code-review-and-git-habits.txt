@@ -1,0 +1,53 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 11 - Code Review and Git Habits
+Target length: about 5 minutes (roughly 700 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today isn't about syntax at all. It's about how a team works together: version control and code review. Great engineers write good code, but great teams build habits that make good code the default.
+
+[SEGMENT 1 - Small, focused changes]
+
+The single best thing you can do for review quality is keep changes small. A pull request with three hundred changed lines gets a careful review. One with three thousand gets a quick skim and an approval, because nobody can hold that much in their head.
+
+Aim for one logical change per pull request: a bug fix, a feature slice, or a refactor, but not all three tangled together. If you need a big change, break it into a sequence of small, safe steps, each of which keeps the app working. Use feature flags to merge incomplete work without exposing it. Small changes are reviewed faster, merged faster, easier to revert, and much less likely to cause conflicts.
+
+[SEGMENT 2 - Meaningful commits]
+
+Write commit messages for the future reader. A good message has a short summary line in the imperative mood, like fix login redirect on expired session, and, when needed, a body that explains why the change was made, not just what changed. The diff already shows what; only you know why.
+
+Many teams adopt a conventional format, with prefixes like fix, feat, and chore, because it makes history scannable and can drive automatic changelogs and version bumps. Commit often locally, but tidy the history before sharing, so the story is coherent. And never commit secrets, large generated files, or dependency folders; use an ignore file.
+
+[SEGMENT 3 - Branching strategy]
+
+Keep branching simple. Many teams do well with trunk-based development: short-lived branches, merged to the main branch frequently, protected by CI. Long-lived branches drift and produce painful merges. Whatever your model, protect the main branch: require passing checks and at least one approving review before merge, and forbid force-pushing to it.
+
+Keep your branch current by rebasing or merging main regularly, and resolve conflicts early, while they're small. And know your merge options: squash merging gives a clean history of one commit per pull request, while preserving commits keeps granular detail. Pick one convention and stick with it.
+
+[SEGMENT 4 - Writing a great pull request]
+
+As an author, make your reviewer's job easy. Write a clear description: what the change does, why it's needed, how you tested it, and anything you're unsure about. Add screenshots or recordings for interface changes. Link the related issue. Review your own diff first; you'll catch embarrassing leftovers, like debug logs, before anyone else does.
+
+Let automation do the mechanical checks, so humans can focus on what machines can't judge: Is the design sound? Are edge cases handled? Is this easy to understand and maintain? Are the tests meaningful?
+
+[SEGMENT 5 - Reviewing with kindness and clarity]
+
+As a reviewer, be prompt; waiting days for feedback kills momentum. Be specific and explain your reasoning. Distinguish between blocking issues and optional suggestions, a simple prefix like nit for tiny stylistic points makes the difference clear. Ask questions rather than issuing commands: what happens if this list is empty, instead of you forgot to handle empty lists.
+
+Critique the code, never the person. And praise good work; noticing a clever solution or a well-written test builds a healthy culture. Remember, the goal isn't to prove you're smart. The goal is to ship better software together and to spread knowledge across the team.
+
+For authors, receiving feedback well matters just as much. Assume good intent, don't take it personally, and if a comment is unclear, ask. If you disagree, explain your reasoning calmly, and if it's a matter of taste, defer to the team's conventions.
+
+[SEGMENT 6 - Documenting decisions]
+
+Finally, capture the big decisions. A short architecture decision record, noting the context, the options considered, and what you chose and why, saves enormous time when someone asks, why on earth did we do it this way, a year from now.
+
+[RECAP]
+
+Recap: small focused pull requests, meaningful commits, simple branching with a protected main, clear pull request descriptions, kind and specific reviews, and written records of decisions.
+
+[OUTRO]
+
+Your task: next time you open a pull request, write the description you'd want to receive. Next and final episode: architecture and state management. Ship it clean.
+
+[OUTRO MUSIC - fade out]

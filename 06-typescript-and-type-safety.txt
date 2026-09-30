@@ -1,0 +1,53 @@
+SHIP IT CLEAN: JAVASCRIPT BEST PRACTICES
+Episode 6 - Type Safety with TypeScript and JSDoc
+Target length: about 5 minutes (roughly 700 words)
+
+[INTRO MUSIC - 5 seconds, fade under]
+
+Welcome to Ship It Clean. Today: types. JavaScript is dynamically typed, which is flexible right up until it isn't. A typo in a property name, a function receiving undefined, an API returning a different shape than you expected: all classic runtime surprises. Static types move those surprises to your editor. Let's talk about doing that well.
+
+[SEGMENT 1 - Why types pay off]
+
+Types do three jobs. First, they catch a whole class of bugs before code runs. Second, they act as always-accurate documentation: a function signature tells you what goes in and what comes out, and unlike a comment, it can't drift out of date without the compiler complaining. Third, they power tooling: autocomplete, safe renames, and go-to-definition across a large codebase.
+
+That third one is underrated. Renaming a field across two hundred files with confidence is the difference between a refactor you do and a refactor you avoid.
+
+[SEGMENT 2 - Turn strict mode on]
+
+If you use TypeScript, enable strict mode from day one. Strict turns on several checks, and the crucial one is strict null checking, which forces you to handle the possibility that a value is null or undefined. That single check eliminates a huge share of real-world production bugs.
+
+Adopting strictness later is painful, because you're fixing thousands of errors at once. If you're migrating an existing project, go incrementally: allow JavaScript files alongside TypeScript, convert file by file, and tighten flags over time. Progress beats perfection.
+
+[SEGMENT 3 - Avoid the escape hatches]
+
+TypeScript has escape hatches, and the biggest is any. Any switches the type checker off for that value, and worse, it spreads: anything touched by an any can become any. Use unknown instead. Unknown says, I don't know what this is yet, and forces you to narrow it with a check before using it.
+
+Be equally suspicious of type assertions, the as keyword, and the non-null assertion, the exclamation mark. They tell the compiler to trust you, and the compiler is usually right to doubt. Sometimes they're necessary, but each one is a spot where reality can disagree with your types. Treat them like code smells and keep them rare.
+
+[SEGMENT 4 - Model your domain]
+
+Now the fun part: use types to make invalid states unrepresentable. Instead of one object with a status string plus optional fields that may or may not be present, use a discriminated union. A request state is either loading, or success with data, or error with a message. Each shape carries exactly the fields that make sense for it, and the compiler forces you to handle every case.
+
+Add exhaustive checking with a never type in your switch statement's default branch, and when someone adds a new variant later, every place that forgot to handle it lights up red. That's the compiler doing code review for you.
+
+Prefer narrow types too: a union of specific string literals beats a generic string, and branded types can stop you from mixing up a user ID and an order ID.
+
+[SEGMENT 5 - Types at the boundary]
+
+Here's the catch: types vanish at runtime. TypeScript can't verify that the JSON from your API actually matches the interface you wrote. So validate external data at the boundary with a runtime schema library, and derive the static type from the schema. One source of truth, checked at runtime, trusted afterwards.
+
+[SEGMENT 6 - JSDoc as a lighter option]
+
+Not ready for a build step? You can get much of the benefit with JSDoc comments and the TypeScript checker in check-only mode. Annotate parameters and return types in comments, enable type checking for your JavaScript files, and your editor and CI will flag mistakes without any compilation. It's a fine choice for small libraries, scripts, and teams wanting gradual adoption.
+
+Whichever route, run the type check in CI so errors block merges. Types nobody enforces decay quickly.
+
+[RECAP]
+
+Recap: types catch bugs, document intent, and unlock tooling. Enable strict mode, prefer unknown over any, use discriminated unions to model states, validate at runtime boundaries, and consider JSDoc for a lighter path.
+
+[OUTRO]
+
+Try this: search for any in your codebase and replace three of them with real types. Next episode: linting, formatting, and CI, the automation that keeps a team consistent. Ship it clean.
+
+[OUTRO MUSIC - fade out]
