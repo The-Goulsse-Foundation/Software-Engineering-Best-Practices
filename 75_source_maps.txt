@@ -1,0 +1,4 @@
+PODCAST 75 — SOURCE MAPS AND PRODUCTION DEBUGGING
+Approximate runtime: 5 minutes
+
+Production debugging is easier when generated JavaScript can be mapped back to source code. Source maps connect transformed or bundled code to the original files. They are valuable for stack traces and error monitoring. But source maps can also expose source information, so deployment and access policies should be considered. Make sure production error reporting receives the correct source-map version for the deployed build. Mismatched artifacts can produce misleading stack traces. Build identifiers help connect an error to the exact source revision. Do not assume a source map generated locally matches a production bundle. Reproducible builds make debugging more reliable. Test that error-monitoring systems can symbolicate representative errors. Source maps are part of the observability pipeline. They turn low-level production locations into information engineers can actually use.

@@ -1,0 +1,4 @@
+PODCAST 76 — RELEASE ENGINEERING FOR JAVASCRIPT
+Approximate runtime: 5 minutes
+
+A release is more than publishing a package or deploying a server. It is a controlled transition from one known state to another. Identify the artifact being released and the source revision that produced it. Run automated validation before release. Consider database migrations and backward compatibility. For web applications, ensure assets and APIs remain compatible during rolling deployments. Feature flags can separate deployment from exposure. Monitor important metrics after release. Have a rollback strategy that accounts for data changes; reverting application code does not automatically undo a database migration. Release notes should communicate meaningful changes and migration requirements. Avoid manual steps that exist only in someone's memory. Automate repeatable release operations. A mature release process makes the normal path predictable and the failure path survivable.
