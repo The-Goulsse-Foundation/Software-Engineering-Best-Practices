@@ -1,0 +1,36 @@
+PODCAST 46 — DESIGN PATTERNS WITHOUT OVERENGINEERING
+Approximate runtime: 5 minutes
+
+Design patterns are recurring solutions to recurring problems.
+
+JavaScript developers encounter patterns such as factories, adapters, observers, strategies, decorators, and dependency injection.
+
+Patterns can provide useful vocabulary.
+
+If an engineer says 'adapter,' they can communicate that one interface is being translated into another.
+
+But patterns become harmful when they are applied mechanically.
+
+A small function does not need a factory factory.
+
+A simple conditional does not necessarily require a strategy hierarchy.
+
+The best time to introduce a pattern is when the underlying problem actually exists.
+
+Factories are useful when object construction has meaningful variation.
+
+Adapters are useful when two interfaces need to communicate without coupling their implementations.
+
+Strategy-like designs are useful when an algorithm varies while the surrounding workflow remains stable.
+
+Decorators can add behavior while preserving an interface.
+
+Observer patterns can decouple producers and consumers, but they also make control flow harder to trace.
+
+Patterns should reduce complexity, not increase it.
+
+When reviewing a design, ask whether the pattern makes future changes easier.
+
+If removing the pattern would make the code dramatically simpler without losing required flexibility, the pattern may not be necessary.
+
+Patterns are tools, not achievements.

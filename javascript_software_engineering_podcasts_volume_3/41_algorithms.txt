@@ -1,0 +1,26 @@
+PODCAST 41 — ALGORITHMIC THINKING IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Good JavaScript engineering is not only about syntax. It is also about choosing algorithms that remain practical as data grows.
+
+Start by understanding the input size. An algorithm that is fine for one hundred records may become unusable for ten million.
+
+Big O notation provides a useful vocabulary. Constant-time operations are generally independent of input size. Linear algorithms grow with the amount of data. Quadratic algorithms can become expensive quickly.
+
+Consider a simple example: searching for a value repeatedly in an array can become expensive if every search scans the entire array. A Set or Map may provide a more appropriate structure when membership lookup is the main operation.
+
+Data structures should match the problem.
+
+Arrays are excellent for ordered collections. Maps are useful for key-value relationships. Sets are useful when uniqueness and membership matter.
+
+Do not optimize blindly. First understand the workload.
+
+Also consider memory complexity. A faster algorithm that consumes enormous amounts of memory may not be practical.
+
+JavaScript provides many built-in methods, but convenience does not remove algorithmic cost. filter, map, reduce, sort, and includes all have performance characteristics that matter at scale.
+
+Algorithmic thinking is especially valuable in backend systems, data processing, search, and large frontend lists.
+
+The goal is not to make every function mathematically optimal.
+
+The goal is to recognize when the amount of data changes the engineering problem.

@@ -1,0 +1,30 @@
+PODCAST 56 — AUTHORIZATION AND ACCESS CONTROL
+Approximate runtime: 5 minutes
+
+Authorization answers a different question from authentication.
+
+Authentication asks who the requester is. Authorization asks what that requester is allowed to do.
+
+A common mistake is checking authorization only in the user interface.
+
+Hiding a button does not prevent a malicious client from calling the underlying API.
+
+The server or trusted backend must enforce permissions.
+
+Use clear authorization rules. For example, a user may read their own profile but not another user's private records.
+
+Resource ownership checks are often as important as role checks.
+
+Role-based access control can be useful, but roles should not become an unmanageable list of exceptions.
+
+Attribute-based rules can express more detailed policies when necessary.
+
+Centralize important authorization decisions when possible so they do not become scattered across dozens of controllers.
+
+Test both allowed and denied cases.
+
+Pay special attention to privilege escalation: can a user modify an identifier in a request and access another user's resource?
+
+Authorization bugs can be subtle because ordinary users may never encounter them during normal testing.
+
+The key principle is simple: every sensitive operation needs an explicit authorization decision.

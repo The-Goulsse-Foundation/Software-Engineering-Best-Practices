@@ -1,0 +1,32 @@
+PODCAST 59 — RETRIES, BACKOFF, AND FAILURE RECOVERY
+Approximate runtime: 5 minutes
+
+Retries can make systems more resilient, but poorly designed retries can make outages worse.
+
+First determine whether an error is retryable.
+
+A temporary network failure may be retryable. Invalid input usually is not.
+
+Retry counts should be bounded.
+
+Immediate retries can create synchronized traffic spikes when many clients fail at the same time.
+
+Exponential backoff increases the delay between attempts.
+
+Jitter introduces randomness so clients do not all retry simultaneously.
+
+Timeouts and retries must be considered together.
+
+If an operation has a ten-second timeout and three attempts, the caller could wait much longer than expected.
+
+Set an overall deadline when the user experience or system architecture requires one.
+
+Be careful with non-idempotent operations. Retrying a request can duplicate side effects unless the operation is designed for safe repetition.
+
+Log retries without overwhelming the logging system.
+
+Measure retry rates. A service that constantly succeeds only after several attempts may have an underlying reliability problem.
+
+Retries are a recovery mechanism, not a substitute for fixing failures.
+
+The goal is bounded resilience: recover from transient problems without amplifying persistent ones.

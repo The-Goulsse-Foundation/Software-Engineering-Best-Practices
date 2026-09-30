@@ -1,0 +1,28 @@
+PODCAST 51 — BROWSER STORAGE AND CLIENT DATA
+Approximate runtime: 5 minutes
+
+Web applications have several ways to store client-side data, including memory, local storage, session storage, cookies, IndexedDB, and browser caches.
+
+Each has different semantics.
+
+Do not put sensitive authentication information into browser storage without understanding the security consequences.
+
+Cookies can have security properties such as HttpOnly and SameSite that ordinary JavaScript storage does not provide.
+
+Local storage is simple, but it is synchronous and string-based. It should not become a giant application database.
+
+IndexedDB is designed for larger structured client-side data.
+
+Memory is appropriate for temporary UI state that does not need to survive a reload.
+
+Think carefully about expiration. Client-side data can become stale.
+
+Version stored data. Your application may be updated while an old user's browser still contains data created by a previous version.
+
+Handle corrupted storage gracefully. Users can clear storage or browser extensions can interfere with assumptions.
+
+Avoid storing more information than the application actually needs.
+
+Client-side storage is part of your application's data architecture.
+
+Choose the mechanism based on persistence, security, size, synchronization, and performance requirements rather than convenience alone.

@@ -1,0 +1,32 @@
+PODCAST 60 — CACHING STRATEGIES IN JAVASCRIPT SYSTEMS
+Approximate runtime: 5 minutes
+
+Caching stores information closer to where it is needed so future access can be faster.
+
+Caching can dramatically improve performance, but it introduces one famous problem: invalidation.
+
+Before adding a cache, identify what data is expensive to produce and how stale it is allowed to become.
+
+Use explicit expiration where appropriate.
+
+Cache keys must include every piece of information that affects the result. An incomplete key can return the wrong user's data.
+
+Consider cache stampedes. If a popular value expires and thousands of requests attempt to regenerate it simultaneously, the cache can create a sudden load spike.
+
+Some systems use request coalescing or stale-while-revalidate approaches to reduce this problem.
+
+Caching also consumes memory and storage.
+
+Client-side caches, server-side caches, database caches, and CDN caches operate at different layers.
+
+Understand which layer owns freshness.
+
+Do not cache sensitive information without considering isolation and eviction.
+
+A cache should have a failure strategy. If the cache is unavailable, can the system fall back to the source?
+
+Measure hit rate and miss cost.
+
+Caching is an optimization that changes consistency behavior.
+
+Add it when the performance benefit is clear and the application can tolerate the resulting complexity.

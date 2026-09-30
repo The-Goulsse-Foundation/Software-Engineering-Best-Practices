@@ -1,0 +1,30 @@
+PODCAST 45 — OBJECT-ORIENTED DESIGN IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+JavaScript supports object-oriented programming through prototypes and classes, but good object-oriented design is about more than using the class keyword.
+
+A useful object has a clear responsibility and protects important invariants.
+
+Encapsulation means consumers should interact through meaningful operations rather than manipulating internal details directly.
+
+Composition is often preferable to deep inheritance hierarchies.
+
+If several objects share behavior, ask whether that behavior should be composed from smaller components rather than inherited from a complex base class.
+
+Inheritance creates strong coupling between parent and child implementations.
+
+Classes are useful when the domain naturally contains entities with state and behavior.
+
+But plain objects and functions can often express simpler concepts more clearly.
+
+Avoid classes that contain only getters and setters without meaningful invariants.
+
+An object's methods should communicate domain actions. For example, account.deposit can express intent better than allowing arbitrary code to modify balance directly.
+
+Constructors should establish valid initial state.
+
+Do not use object-oriented patterns simply because they are familiar from another programming language.
+
+JavaScript gives you multiple paradigms.
+
+Choose the simplest model that expresses ownership, behavior, and invariants clearly.

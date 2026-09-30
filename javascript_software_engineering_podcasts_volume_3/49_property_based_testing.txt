@@ -1,0 +1,30 @@
+PODCAST 49 — PROPERTY-BASED TESTING FOR JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Traditional tests specify examples.
+
+Property-based testing goes one step further by describing rules that should remain true across many generated inputs.
+
+Imagine a function that sorts an array.
+
+Instead of testing only one array, you might express properties such as: the output has the same elements as the input, and the output is ordered according to the comparison rule.
+
+This can reveal edge cases humans do not think to write manually.
+
+Property-based testing is particularly useful for parsers, serializers, mathematical functions, data transformations, and state machines.
+
+The key is choosing meaningful properties.
+
+A weak property can generate thousands of tests without providing much confidence.
+
+When a generated case fails, good tooling should shrink the input toward a smaller example that still demonstrates the problem.
+
+Property-based tests complement ordinary example-based tests.
+
+Examples communicate important scenarios. Properties describe general invariants.
+
+Use both when the domain benefits from them.
+
+The broader engineering lesson is powerful: instead of asking only 'Does this example work?', ask 'What must always be true?'
+
+That question often produces stronger software.

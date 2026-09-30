@@ -1,0 +1,32 @@
+PODCAST 58 — IDEMPOTENCY IN JAVASCRIPT APIs
+Approximate runtime: 5 minutes
+
+Distributed systems retry requests.
+
+A client may send a request and lose the response. It cannot know whether the server processed the request, so it may send the request again.
+
+For operations such as payments, orders, or resource creation, duplicate processing can be dangerous.
+
+Idempotency means repeating the same operation produces the same effective result.
+
+One common approach is an idempotency key.
+
+The client supplies a unique key for a logical operation. The server records the result associated with that key and can return the same result if the request is repeated.
+
+The exact design depends on the operation.
+
+Database uniqueness constraints can also provide important protection.
+
+Do not assume that a network request is executed exactly once.
+
+Queues and workers have similar problems.
+
+Idempotency often requires designing state transitions carefully.
+
+Ask what happens if a process crashes after performing the external side effect but before recording completion.
+
+These failure windows are where distributed systems become difficult.
+
+Idempotency is not merely an API feature. It is a strategy for making retries safe.
+
+Design for repeated execution whenever the surrounding infrastructure can retry.

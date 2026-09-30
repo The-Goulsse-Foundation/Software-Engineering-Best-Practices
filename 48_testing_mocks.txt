@@ -1,0 +1,32 @@
+PODCAST 48 — MOCKS, FAKES, AND STUBS IN JAVASCRIPT TESTS
+Approximate runtime: 5 minutes
+
+Test doubles help engineers isolate code from dependencies.
+
+A stub provides controlled behavior. A fake provides a simplified working implementation. A mock can verify that interactions occurred.
+
+These tools are useful, but overuse creates fragile tests.
+
+If every dependency is mocked, the test may verify the assumptions of the implementation rather than the behavior of the system.
+
+For business logic, pure functions often eliminate the need for mocks entirely.
+
+For integration tests, using a real database or realistic service boundary can provide more confidence than mocking every call.
+
+Mocks are especially useful when the real dependency is slow, unavailable, expensive, or difficult to control.
+
+But make expectations meaningful.
+
+A test that says 'method X was called once' may not tell you whether the correct outcome occurred.
+
+Prefer assertions about observable behavior when possible.
+
+Use deterministic test data.
+
+Be careful with global mocks because they can affect unrelated tests.
+
+Clean up test doubles between tests.
+
+A healthy test suite uses the least complicated test double that provides the needed isolation.
+
+The goal is confidence, not maximum mocking.

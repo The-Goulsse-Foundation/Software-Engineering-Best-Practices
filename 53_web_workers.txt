@@ -1,0 +1,32 @@
+PODCAST 53 — WEB WORKERS FOR CPU-INTENSIVE JAVASCRIPT
+Approximate runtime: 5 minutes
+
+JavaScript running on the browser's main thread shares time with rendering and user interaction.
+
+Long CPU-intensive tasks can therefore make an interface feel frozen.
+
+Web Workers allow certain computation to happen in another execution context.
+
+They can be useful for parsing large data sets, expensive calculations, image processing, and other CPU-heavy workloads.
+
+But workers have communication overhead. Data must cross a boundary.
+
+Design worker APIs around clear messages.
+
+Do not move every function into a worker just because workers exist.
+
+Measure the actual cost of the operation.
+
+Typed arrays and transferable objects can sometimes reduce the cost of moving large binary data.
+
+Workers also have lifecycle concerns. Create and terminate them intentionally.
+
+Errors inside workers need explicit handling.
+
+Testing worker-based code can require a different strategy from ordinary functions.
+
+A useful architecture is to keep the computational logic independent from the worker transport. Then the same pure logic can be tested directly while the worker layer handles communication.
+
+Workers are a tool for protecting responsiveness.
+
+Use them when measurement shows that CPU work is competing with interactive performance.

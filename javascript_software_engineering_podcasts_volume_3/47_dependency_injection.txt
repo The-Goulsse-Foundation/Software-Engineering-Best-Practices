@@ -1,0 +1,30 @@
+PODCAST 47 — DEPENDENCY INJECTION IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Dependency injection sounds complicated, but the basic idea is simple: instead of creating every dependency internally, provide important dependencies from outside.
+
+Consider a function that needs a database. If it imports a concrete database connection and creates its own connection, testing becomes harder.
+
+If the database is passed into the function or constructor, the dependency is explicit.
+
+This can make tests simpler because a test can provide a fake or controlled implementation.
+
+Dependency injection also improves architecture by making relationships visible.
+
+But avoid building an enormous dependency injection framework for a small application.
+
+JavaScript's functions already provide a lightweight form of dependency injection.
+
+Pass functions as arguments. Pass service objects as arguments. Use factories when construction is complex.
+
+The key question is whether the dependency needs to vary.
+
+If a dependency is stable, trivial, and has no meaningful alternative, injecting it may add unnecessary ceremony.
+
+Dependency injection is most useful at boundaries: databases, clocks, network clients, file systems, message publishers, and external services.
+
+A particularly useful practice is injecting time when deterministic tests are required.
+
+The goal is not maximum abstraction.
+
+The goal is explicit dependencies and controlled side effects.

@@ -1,0 +1,30 @@
+PODCAST 42 — CHOOSING DATA STRUCTURES IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+A data structure determines how information is organized and accessed.
+
+JavaScript gives us arrays, objects, Maps, Sets, typed arrays, and other structures.
+
+Arrays are ideal when order matters and indexed access is common.
+
+Objects are useful for records with named properties, but Map is often clearer when the concept is explicitly a dictionary or collection of key-value pairs.
+
+Set is useful when uniqueness is important.
+
+Maps and Sets also avoid some awkwardness that comes with using ordinary objects as dictionaries.
+
+Typed arrays are useful for binary data and numerical workloads.
+
+The best data structure depends on operations. Ask what the program needs to do repeatedly: lookup, insertion, deletion, ordering, iteration, aggregation, or random access.
+
+Avoid converting between representations unnecessarily. Repeatedly turning arrays into objects and back can add both complexity and cost.
+
+Data structure choices also affect readability. A Set communicates uniqueness immediately.
+
+Memory layout can matter in high-performance systems, but correctness and maintainability usually come first.
+
+A useful engineering habit is to describe the dominant operation before selecting the structure.
+
+If the question is 'How do I quickly determine whether this identifier has already appeared?', Set becomes an obvious candidate.
+
+Good data structures make common operations natural and uncommon operations explicit.

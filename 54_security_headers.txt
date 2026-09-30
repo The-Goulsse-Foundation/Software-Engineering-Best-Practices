@@ -1,0 +1,30 @@
+PODCAST 54 — WEB SECURITY HEADERS AND JAVASCRIPT APPLICATIONS
+Approximate runtime: 5 minutes
+
+Security headers are an important layer of defense for web applications.
+
+Content Security Policy can restrict where scripts and other resources may come from, reducing the impact of certain injection vulnerabilities.
+
+Other headers can influence framing, MIME handling, transport security, and browser behavior.
+
+The exact configuration depends on the application.
+
+A security header should not be copied from a random configuration without understanding its effect.
+
+For example, a strict Content Security Policy can require changes to how scripts, styles, or third-party resources are loaded.
+
+HTTPS should be treated as a baseline for applications handling sensitive data.
+
+Cookies should use appropriate security attributes.
+
+Security configuration belongs in deployment and infrastructure documentation so it does not become forgotten server state.
+
+Test headers in staging before deploying restrictive policies.
+
+Observe browser reports and failures during rollout.
+
+Security headers do not replace input validation, authorization, dependency management, or secure coding.
+
+They are defense in depth.
+
+The broader lesson is that application security exists across multiple layers: code, browser, transport, infrastructure, identity, and operations.

@@ -1,0 +1,32 @@
+PODCAST 50 — CONTRACT TESTING FOR JAVASCRIPT SERVICES
+Approximate runtime: 5 minutes
+
+When two systems communicate, both sides depend on a contract.
+
+A provider may expose an HTTP API while a consumer expects particular fields, types, and error behavior.
+
+Contract testing verifies that these expectations remain compatible.
+
+This can catch integration problems before deployment.
+
+Contracts should describe meaningful behavior, not every internal implementation detail.
+
+For example, a consumer may require a user identifier and display name but not care how the provider stores that user.
+
+Versioning matters. Providers should understand which consumers depend on a contract.
+
+Backward compatibility should be deliberate.
+
+Event-driven systems have contracts too. A message schema is an interface.
+
+Schema evolution should consider old consumers and rolling deployments.
+
+Contract tests are especially useful when teams deploy independently.
+
+They can reduce reliance on enormous end-to-end test environments.
+
+But contract tests are not a replacement for integration and end-to-end testing.
+
+They answer a specific question: are the assumptions between these components still compatible?
+
+Clear contracts make distributed JavaScript systems easier to evolve.

@@ -1,0 +1,34 @@
+PODCAST 44 — FUNCTIONAL PROGRAMMING IDEAS IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+JavaScript supports several programming styles, including functional programming.
+
+Functional programming emphasizes values, functions, composition, and minimizing uncontrolled side effects.
+
+Pure functions are a useful foundation. Given the same input, a pure function returns the same result and does not modify external state.
+
+Functions such as map, filter, and reduce make transformations explicit.
+
+But functional programming should not become a collection of clever one-liners.
+
+Readable imperative code can be better when the algorithm is naturally sequential.
+
+The goal is to make behavior predictable.
+
+Composition is another valuable idea. Instead of one enormous function, small transformations can be combined into a pipeline.
+
+Higher-order functions allow behavior to be passed as data.
+
+Closures allow functions to retain access to surrounding values, which is useful for factories and encapsulation.
+
+However, closures can also accidentally retain large objects and contribute to memory usage.
+
+Functional techniques work especially well for data transformations and business rules.
+
+They can make testing easier because pure transformations require fewer dependencies.
+
+Use the parts of functional programming that reduce complexity.
+
+You do not need to turn every loop into a chain of ten array methods.
+
+The best style is the one that communicates the algorithm clearly while controlling state and side effects.

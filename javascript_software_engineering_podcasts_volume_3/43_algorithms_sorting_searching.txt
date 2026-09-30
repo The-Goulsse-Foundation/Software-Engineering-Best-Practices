@@ -1,0 +1,34 @@
+PODCAST 43 — SORTING AND SEARCHING IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Sorting and searching appear everywhere in software.
+
+JavaScript provides Array.prototype.sort, but engineers should understand an important detail: sort mutates the array.
+
+If the original ordering matters, make an intentional copy before sorting.
+
+Also remember that comparison behavior should be explicit. Sorting numeric values requires a numeric comparison function rather than relying on default string-like ordering.
+
+Before sorting, ask whether sorting is necessary.
+
+If a system repeatedly needs the same ordering, it may be better to maintain an appropriate representation or let a database perform the ordering.
+
+Searching has similar considerations.
+
+A linear search is straightforward and often perfectly adequate.
+
+If data is sorted and the workload is large, binary search can reduce the number of comparisons dramatically.
+
+For repeated membership checks, a Set may be more appropriate than repeatedly scanning an array.
+
+Search and sorting choices should follow access patterns.
+
+Be careful about repeatedly sorting inside loops. A single expensive operation can become extremely expensive when multiplied by thousands of iterations.
+
+Benchmark realistic data when performance matters.
+
+The important lesson is not to memorize every algorithm.
+
+Instead, learn to ask: How much data do we have? How often is this operation performed? Does the data have useful structure already?
+
+That mindset turns algorithm selection into an engineering decision rather than a trivia exercise.

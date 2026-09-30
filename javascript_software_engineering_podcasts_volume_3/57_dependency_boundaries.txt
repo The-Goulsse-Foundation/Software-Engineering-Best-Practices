@@ -1,0 +1,32 @@
+PODCAST 57 — DRAWING DEPENDENCY BOUNDARIES
+Approximate runtime: 5 minutes
+
+Dependencies determine how changes travel through a codebase.
+
+If every module imports everything else, a small change can have a huge impact.
+
+A healthy system limits dependency direction.
+
+For example, a domain module might depend on abstractions or simple interfaces rather than directly importing an HTTP framework and database driver.
+
+This makes the core logic easier to test and reuse.
+
+Circular dependencies are warning signs.
+
+Large shared utility modules can also become dependency magnets. If everything imports utils, utils eventually becomes a hidden architecture.
+
+Instead, organize reusable functionality around coherent concepts.
+
+Dependency boundaries should be visible in imports.
+
+Code review can ask a simple question: should this module really know about that other module?
+
+Sometimes the answer is yes. Sometimes it reveals an architectural problem.
+
+Package boundaries can enforce stronger separation in larger projects.
+
+The goal is not to eliminate dependencies.
+
+Software without dependencies would not be useful.
+
+The goal is to make dependencies intentional, directional, and understandable.

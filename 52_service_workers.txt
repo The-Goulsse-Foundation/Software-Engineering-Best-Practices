@@ -1,0 +1,28 @@
+PODCAST 52 — SERVICE WORKERS AND OFFLINE JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Service workers allow web applications to intercept network requests and support capabilities such as caching and offline behavior.
+
+They are powerful because they operate independently from the page's normal JavaScript execution.
+
+But that independence creates lifecycle complexity.
+
+A service worker can remain active after a page has been updated, so cache and version management must be deliberate.
+
+Use versioned cache names or another controlled strategy.
+
+Be careful when caching API responses. Cached data can become stale and can expose information if caching boundaries are poorly designed.
+
+A service worker update should have a clear lifecycle.
+
+Test first installation, updates, cache misses, offline behavior, and recovery from corrupted caches.
+
+Do not assume that a successful service worker registration means offline support is complete.
+
+The application needs a strategy for what happens when a network request fails.
+
+Offline experiences also require product decisions. Which features should remain available? Which actions can be queued? What happens when connectivity returns?
+
+Service workers are infrastructure running inside the browser.
+
+Treat them with the same discipline as backend infrastructure: versioning, observability where possible, failure handling, and careful rollout.

@@ -1,0 +1,32 @@
+PODCAST 55 — AUTHENTICATION AND SESSION ENGINEERING
+Approximate runtime: 5 minutes
+
+Authentication is the process of establishing who a user or system is.
+
+Session management determines how that authenticated state persists.
+
+A secure design begins by choosing an appropriate authentication mechanism for the application.
+
+Passwords should never be stored directly. They require secure password hashing and appropriate credential-management practices.
+
+Session identifiers should be unpredictable and protected.
+
+Cookies used for sessions should have appropriate security attributes.
+
+Session expiration matters. Long-lived sessions increase the window of exposure if credentials are compromised.
+
+Sensitive operations may require reauthentication or additional verification depending on the application's risk.
+
+Logout should invalidate or otherwise appropriately terminate session state.
+
+Authorization must happen separately. Knowing who a user is does not determine what they can access.
+
+APIs using tokens require careful handling of token lifetime, storage, rotation, and revocation strategy.
+
+Authentication failures should not leak unnecessary information.
+
+Logging should help investigate authentication problems without recording secrets.
+
+Session systems should be tested against expiration, concurrent sessions, invalid credentials, replay, and privilege changes.
+
+Authentication is security-critical infrastructure. Treat it as a system with explicit lifecycle and failure requirements rather than a small login feature.
