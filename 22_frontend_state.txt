@@ -1,0 +1,26 @@
+PODCAST 22 — MANAGING FRONTEND STATE
+Approximate runtime: 5 minutes
+
+Frontend state can become one of the largest sources of complexity in JavaScript applications.
+
+First distinguish kinds of state.
+
+Local UI state might include whether a dialog is open. Server state represents data owned by a backend. URL state represents filters or navigation. Global client state represents information shared across parts of the application.
+
+Do not put every piece of data into one global store.
+
+If state belongs to one component, keep it local. If it is naturally represented by the URL, consider using the URL. If it comes from a server, use a strategy designed around fetching, caching, invalidation, and synchronization.
+
+Avoid duplicated sources of truth. If the same user information is stored independently in several places, they can drift apart.
+
+Derived state should often be computed rather than stored. Storing both quantity and total, for example, creates a synchronization problem if total can be calculated from quantity and price.
+
+Be deliberate about mutation. Immutable update patterns can make state changes easier to reason about, while accidental mutation can produce difficult bugs.
+
+Loading, error, empty, and success states should be explicit.
+
+Think about stale data. A UI that displays cached information may need to indicate or refresh it.
+
+State architecture should follow actual requirements rather than the popularity of a particular library.
+
+The best state management system is the one that makes ownership and synchronization obvious.

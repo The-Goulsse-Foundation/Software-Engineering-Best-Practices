@@ -1,0 +1,24 @@
+PODCAST 23 — NODE.JS BACKEND ENGINEERING PRACTICES
+Approximate runtime: 5 minutes
+
+Node.js is excellent for I/O-heavy services, but good Node.js engineering requires understanding its execution model.
+
+The event loop allows JavaScript to handle many concurrent I/O operations efficiently. But expensive synchronous work can block that loop.
+
+Avoid large CPU-intensive synchronous operations inside request handlers. For CPU-heavy workloads, consider worker threads, separate processes, queues, or other architecture appropriate to the workload.
+
+Keep request handlers thin. Parse input, authenticate, call application logic, and produce a response. Put business rules elsewhere.
+
+Set appropriate request limits and timeouts. A server should not accept unlimited input or wait forever for dependencies.
+
+Gracefully handle shutdown. When a process receives a termination signal, stop accepting new work, finish what can safely finish, close connections, and exit.
+
+Use connection pools for databases and other resources where appropriate.
+
+Manage backpressure. If a downstream system is slower than your application, uncontrolled buffering can consume memory.
+
+Treat external services as unreliable. Add timeouts, bounded retries, and sensible failure behavior.
+
+Do not assume one Node.js process is immortal. Production systems need process supervision, health checks, deployment strategy, and observability.
+
+Node.js gives you powerful primitives. Reliable services come from designing around failure, concurrency, and resource limits.

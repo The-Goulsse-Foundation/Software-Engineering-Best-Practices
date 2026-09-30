@@ -1,0 +1,22 @@
+PODCAST 03 — WRITING SMALL, COMPOSABLE JAVASCRIPT FUNCTIONS
+Approximate runtime: 5 minutes
+
+Functions are the basic units of behavior in JavaScript. Good functions make systems easier to understand, test, and reuse.
+
+A function should have a focused responsibility. If a function validates a request, writes to a database, sends an email, and formats an HTTP response, it is doing several jobs.
+
+Large functions are not automatically bad, but they deserve scrutiny. Look for multiple levels of abstraction mixed together. For example, a function should not simultaneously decide business rules and manipulate low-level HTTP headers.
+
+Prefer explicit inputs and outputs. Functions that depend heavily on hidden global state are harder to test and reason about.
+
+Pure functions are particularly valuable. A pure function produces the same result for the same inputs and does not modify external state. You cannot make every function pure, but isolating pure logic makes the rest of the application simpler.
+
+Avoid excessive parameter lists. If a function takes eight unrelated arguments, its API may be telling you something. A cohesive options object can sometimes help, but do not use objects merely to hide complexity.
+
+Return early when that makes control flow clearer. Guard clauses can prevent deeply nested conditionals.
+
+Be intentional with errors. A function should either return a meaningful result or communicate failure in a predictable way. Avoid silently swallowing exceptions.
+
+Finally, resist the urge to abstract too early. Repeated code is sometimes evidence of a missing abstraction, but similar-looking code does not always have the same meaning.
+
+The goal is not tiny functions for their own sake. The goal is understandable units of behavior with clear contracts.

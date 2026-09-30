@@ -1,0 +1,26 @@
+PODCAST 18 — REFACTORING JAVASCRIPT SAFELY
+Approximate runtime: 5 minutes
+
+Refactoring means changing the structure of code without intentionally changing its behavior.
+
+The safest refactoring starts with tests or another reliable way to observe behavior.
+
+Make small changes. If you rename a function, reorganize modules, replace an implementation, and change business rules in the same commit, it becomes difficult to know what caused a regression.
+
+Use automated tooling for mechanical transformations when possible. Editors can rename symbols and format code consistently.
+
+Refactor toward clearer boundaries. If a module knows too much about another module's internals, introduce a cleaner interface.
+
+Watch for accidental behavior changes involving JavaScript's coercion rules, object identity, mutation, equality, dates, and asynchronous execution.
+
+Remove dead code when you can verify it is truly unused. Dead code creates uncertainty.
+
+Avoid speculative abstractions. A complicated abstraction built for hypothetical future requirements can be harder to maintain than duplicated code.
+
+Technical debt should be treated as a tradeoff rather than a moral failure. Sometimes shipping a simple solution is appropriate. The important part is recognizing when complexity begins to slow future work.
+
+Refactoring should be connected to a reason: reducing coupling, improving testability, simplifying a hot path, or enabling a new feature.
+
+A good refactor leaves the code easier to change than before without requiring a leap of faith.
+
+Small, observable, reversible changes are the foundation of safe refactoring.

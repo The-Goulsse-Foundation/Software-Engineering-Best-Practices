@@ -1,0 +1,24 @@
+PODCAST 02 — NAMING VARIABLES, FUNCTIONS, AND MODULES
+Approximate runtime: 5 minutes
+
+One of the highest-leverage software engineering skills is naming.
+
+JavaScript code is read far more often than it is written. A good name lets the reader understand intent without opening another file.
+
+Prefer names that communicate meaning. Instead of data, consider userProfile, invoiceItems, or searchResults. Instead of process, describe the action: calculateTax, validateEmail, or publishEvent.
+
+Boolean variables deserve special attention. Names such as isActive, hasPermission, canRetry, and shouldCache tell the reader that the value represents a condition.
+
+Functions should generally describe what they do. A function called saveUser communicates more than a function called handleData.
+
+Avoid misleading abbreviations. Shorter is not automatically clearer. A few characters saved today can create confusion months later.
+
+Be careful with generic words such as manager, helper, utility, and service. They can be appropriate, but they often hide responsibility. A function called formatCurrency tells you more than a function called helper.
+
+Naming also creates an architecture. If your project consistently distinguishes repositories, services, controllers, validators, and domain objects, the vocabulary helps engineers understand how pieces interact.
+
+Do not optimize names for brevity at the expense of comprehension. But do not create enormous names that encode an entire paragraph either.
+
+A practical rule is that names should answer the question: what is this thing responsible for?
+
+Good naming is a form of documentation that stays next to the code.

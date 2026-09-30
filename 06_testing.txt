@@ -1,0 +1,26 @@
+PODCAST 06 — A PRACTICAL TESTING STRATEGY FOR JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Testing is not simply about achieving a percentage shown by a coverage tool.
+
+A useful test suite gives engineers confidence that important behavior remains correct as the code changes.
+
+Start with unit tests for pure business logic. They are usually fast and precise. Test inputs, outputs, boundary conditions, and important failure cases.
+
+Then use integration tests where components need to work together. For example, a service that communicates with a database should have tests that verify the actual interaction rather than mocking every detail.
+
+End-to-end tests are valuable for critical user journeys. They can verify that the application behaves correctly from the perspective of a real user or API client.
+
+Do not make every test an end-to-end test. Slow tests reduce feedback speed and can become difficult to diagnose.
+
+Avoid testing implementation details unnecessarily. If a function changes from a loop to a map operation but its behavior stays the same, a good behavioral test should continue passing.
+
+Test boundaries aggressively. Empty arrays, null values, invalid input, maximum lengths, time zones, duplicate records, network failures, and authorization failures are common sources of bugs.
+
+Make tests deterministic. Avoid depending on real time, random values, external services, or shared mutable state unless the test specifically requires it.
+
+Use test names that describe behavior. A name like rejects expired sessions explains more than test1.
+
+Coverage is useful as a signal, not as the goal. A high percentage can coexist with weak tests.
+
+The purpose of testing is risk reduction. Spend the most testing effort where failures would be expensive, dangerous, or difficult to detect.

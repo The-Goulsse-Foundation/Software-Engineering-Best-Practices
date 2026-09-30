@@ -1,0 +1,30 @@
+PODCAST 11 — JAVASCRIPT PERFORMANCE WITHOUT PREMATURE OPTIMIZATION
+Approximate runtime: 5 minutes
+
+Performance engineering begins with measurement.
+
+Do not optimize JavaScript merely because a piece of code looks inefficient. First identify the actual bottleneck.
+
+In browser applications, measure page load, rendering, interaction latency, network activity, memory, and JavaScript execution.
+
+In Node.js services, measure request latency, throughput, CPU, memory, event-loop behavior, database time, and external calls.
+
+One of the most important performance principles is to avoid unnecessary work. Large data transfers, excessive database queries, repeated serialization, and redundant computations often matter more than micro-optimizing a loop.
+
+Be aware of algorithmic complexity. A function that works on ten records may behave very differently with ten million.
+
+Use caching carefully. Caches can improve performance but introduce invalidation, consistency, memory, and operational complexity.
+
+For web applications, reduce unnecessary JavaScript sent to the browser. Code splitting and lazy loading can help when applied appropriately.
+
+Avoid blocking the event loop with expensive synchronous operations in server applications.
+
+Memory matters too. Retained references can create leaks, especially in long-lived processes. Watch event listeners, caches, timers, and global collections.
+
+Benchmark changes when performance matters. Use realistic data and representative workloads.
+
+Performance should be connected to a measurable requirement. Instead of saying 'make it faster,' define a target such as a latency budget or maximum memory usage.
+
+Optimize based on evidence, then measure again.
+
+The best performance work is often boring: fewer operations, less data, better queries, and clearer boundaries.

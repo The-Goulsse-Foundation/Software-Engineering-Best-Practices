@@ -1,0 +1,30 @@
+PODCAST 12 — GIT PRACTICES FOR JAVASCRIPT TEAMS
+Approximate runtime: 5 minutes
+
+Git is more than a backup system. It is a collaboration tool.
+
+Keep commits focused. A commit that changes one coherent concept is easier to review, revert, and understand later.
+
+Write commit messages that communicate intent. The exact convention can vary, but messages should make the history useful.
+
+Avoid committing generated files unless the project explicitly requires them. Be deliberate about build artifacts, environment files, logs, and local configuration.
+
+Use .gitignore carefully.
+
+Do not commit secrets. If a secret is accidentally committed, removing it from the latest commit may not be enough because Git history can retain it. Treat exposed credentials as compromised and rotate them.
+
+Keep pull requests focused. Mixing a feature with unrelated refactoring makes review and rollback harder.
+
+Rebase or merge according to the team's documented workflow. The important part is consistency and understanding what your chosen strategy does to history.
+
+Resolve conflicts carefully. A conflict-free merge can still contain a semantic bug.
+
+Use branch protection and required checks for important repositories.
+
+Automated CI should run tests, linting, type checking, builds, and other relevant validation.
+
+Git history is a debugging and communication tool. A future engineer may use it to understand why an unusual decision was made.
+
+Do not optimize for an aesthetically perfect history at the expense of collaboration.
+
+The goal is a repository where engineers can answer three questions: what changed, why did it change, and how was it validated?

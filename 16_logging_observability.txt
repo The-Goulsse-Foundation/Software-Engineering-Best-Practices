@@ -1,0 +1,28 @@
+PODCAST 16 — LOGGING AND OBSERVABILITY IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+A production application needs to explain what happened after something goes wrong.
+
+Logging is one part of that system.
+
+Prefer structured logs over arbitrary strings when possible. Fields such as timestamp, severity, request ID, operation, and service name make logs easier to search and analyze.
+
+Use appropriate log levels. Debug information may be useful during development but excessive production logging can increase cost and noise.
+
+Do not log secrets or sensitive personal information unnecessarily.
+
+Request correlation is valuable in distributed systems. A request ID can connect an incoming HTTP request with downstream operations, database activity, and background jobs.
+
+Metrics provide a different perspective. Track things such as request counts, error rates, latency, queue depth, and resource utilization.
+
+Tracing can show how a request moves across services.
+
+The three signals—logs, metrics, and traces—answer different questions. Metrics show that something changed. Logs provide detailed events. Traces help explain distributed execution.
+
+Observability should support actionable questions. If a service becomes slow, can you determine whether the cause is CPU, database latency, an external API, or internal processing?
+
+Avoid collecting telemetry merely because you can. Every signal has storage, privacy, and maintenance costs.
+
+Also test observability. A system may function correctly but still be impossible to diagnose if critical events produce no useful context.
+
+Good observability turns production from a black box into a system engineers can investigate.

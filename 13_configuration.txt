@@ -1,0 +1,26 @@
+PODCAST 13 — CONFIGURATION AND ENVIRONMENT VARIABLES
+Approximate runtime: 5 minutes
+
+Applications rarely run in only one environment. Developers, tests, staging, and production often require different configuration.
+
+Keep configuration separate from application logic.
+
+Environment variables are useful for deployment-specific values such as service URLs, ports, feature flags, and credentials. But configuration should still be validated when the application starts.
+
+A missing required variable should produce a clear startup error rather than a mysterious failure ten minutes later.
+
+Distinguish secrets from ordinary configuration. Secrets deserve stronger handling and should not be printed in logs.
+
+Avoid scattering process.env references throughout the codebase. A configuration module can read environment variables once, validate them, and expose a typed or well-defined configuration object.
+
+This creates a boundary between external configuration and internal application code.
+
+Use sensible defaults for non-sensitive values when appropriate, but be cautious about defaults for security-sensitive behavior. A missing production setting should not silently fall back to an insecure option.
+
+Configuration should be observable without exposing secrets. Logging which environment the application believes it is running in can help diagnose deployment problems.
+
+Feature flags also deserve discipline. Temporary flags should have owners and removal plans. Otherwise the codebase accumulates hidden branches.
+
+The general principle is that configuration is input. Validate it, centralize it, and make its behavior explicit.
+
+A reliable application should fail early when its environment cannot support correct operation.

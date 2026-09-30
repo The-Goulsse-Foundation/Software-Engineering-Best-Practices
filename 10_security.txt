@@ -1,0 +1,28 @@
+PODCAST 10 — JAVASCRIPT SECURITY FUNDAMENTALS
+Approximate runtime: 5 minutes
+
+Security should be designed into JavaScript applications from the beginning.
+
+Start with input validation. Data arriving from browsers, APIs, files, queues, or users should not automatically be trusted.
+
+Output encoding matters too. In web applications, inserting untrusted strings into HTML can create cross-site scripting vulnerabilities. Prefer safe DOM APIs and frameworks' escaping mechanisms, and understand when you are bypassing them.
+
+Authentication and authorization are different. Authentication establishes identity; authorization determines what that identity is allowed to do.
+
+Never rely solely on client-side authorization. The server must enforce permissions.
+
+Protect secrets. Do not put API keys, private credentials, or signing secrets in source code or browser bundles. Use appropriate secret-management mechanisms.
+
+Use secure cookie settings when cookies carry authentication state. Understand Secure, HttpOnly, and SameSite behavior.
+
+Protect sensitive endpoints against abuse. Rate limiting, request size limits, and appropriate timeouts can reduce operational and security risk.
+
+Keep dependencies updated and investigate vulnerabilities.
+
+Avoid dangerous dynamic code execution such as eval unless there is an exceptionally strong and controlled reason.
+
+Be cautious with object merging and prototype-related behavior when processing untrusted objects.
+
+Security testing should include authentication, authorization, input handling, session behavior, and dependency risks.
+
+The key lesson is simple: JavaScript security is not a single library. It is a collection of decisions made at every boundary.

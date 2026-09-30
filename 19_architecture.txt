@@ -1,0 +1,26 @@
+PODCAST 19 — ARCHITECTURAL BOUNDARIES IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Architecture is the set of boundaries that determine how software changes.
+
+In JavaScript applications, one useful approach is separating domain logic from infrastructure.
+
+Domain logic answers questions about the business or problem being solved. Infrastructure handles databases, HTTP, queues, files, and external services.
+
+This separation does not require a massive enterprise architecture. It simply means important rules should not be scattered across controllers and database callbacks.
+
+Dependency direction matters. High-level business rules should not become tightly coupled to every low-level implementation.
+
+Dependency injection can help when used simply. Passing a database or service into a function makes dependencies explicit and improves testing.
+
+But abstraction has a cost. Do not create interfaces for every class merely because a diagram says you should.
+
+Boundaries should reflect change. If two components always change together, separating them may add complexity. If one component changes frequently while another is stable, a boundary can be valuable.
+
+Architecture should also account for deployment. A clean module boundary inside one process may be preferable to immediately creating a network service.
+
+Microservices are not automatically more scalable or maintainable. They introduce distributed systems problems: networking, deployment coordination, observability, consistency, and failure.
+
+Start with clear modules. Split processes when there is a concrete reason.
+
+Good architecture is not about having the most layers. It is about controlling coupling and making change predictable.

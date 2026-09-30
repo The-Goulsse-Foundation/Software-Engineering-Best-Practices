@@ -1,0 +1,28 @@
+PODCAST 20 — CI/CD FOR JAVASCRIPT PROJECTS
+Approximate runtime: 5 minutes
+
+Continuous integration turns software validation into a routine process.
+
+A JavaScript repository should ideally have an automated path that installs dependencies, checks formatting or lint rules, runs tests, performs type checking when applicable, builds the project, and produces useful artifacts.
+
+The exact pipeline depends on the project, but the principle is consistent: catch problems before they reach users.
+
+Make CI reproducible. Pin or constrain important tool versions and use lockfiles.
+
+Keep the feedback loop fast. Developers should not wait an hour to discover a simple linting error.
+
+Separate fast checks from slower integration or end-to-end tests when that improves feedback.
+
+Deployment should be repeatable. Avoid procedures that depend on one engineer remembering a sequence of manual commands.
+
+Use environment-specific configuration without copying secrets into source control.
+
+Build artifacts should be traceable. It should be possible to determine which source revision produced a deployed version.
+
+Consider rollback procedures before you need them. A deployment process is incomplete if recovery is mysterious.
+
+Automated tests are necessary but not sufficient. CI can also check dependency vulnerabilities, licenses, generated files, schema compatibility, and other project-specific requirements.
+
+A strong pipeline is boring. It runs the same checks every time, fails clearly, and produces enough information to diagnose problems.
+
+The goal of CI/CD is not automation for its own sake. It is reliable delivery with fewer surprises.

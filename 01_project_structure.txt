@@ -1,0 +1,20 @@
+PODCAST 01 — DESIGNING A JAVASCRIPT PROJECT THAT CAN GROW
+Approximate runtime: 5 minutes
+
+When a JavaScript project is small, almost any structure can appear to work. The problem begins when the project becomes important.
+
+A good project structure should make the code easy to find, easy to test, and easy to change. Start by separating concerns. Put application logic, infrastructure, user interfaces, tests, configuration, and scripts in places that communicate their purpose.
+
+Avoid a giant src folder containing hundreds of unrelated files. Organize around meaningful boundaries. In a web application, that might mean features such as authentication, billing, search, and notifications. In a library, it might mean modules based on domain concepts.
+
+Use consistent naming. If a file exports a service, name it like a service. If a module contains validation logic, make that obvious. Consistency reduces the amount of mental parsing engineers have to do.
+
+Keep entry points thin. Your main server file should not contain business logic. It should assemble dependencies, configure the application, and start it. The same principle applies to command-line programs and workers.
+
+Avoid circular dependencies. They often indicate that module boundaries are unclear. If two modules need each other, consider extracting the shared concept into a third module.
+
+A useful test is this: if a new engineer joins the project, can they predict where a new feature belongs without asking you?
+
+Project structure is not about making folders look sophisticated. It is about making the architecture visible in the filesystem.
+
+The best structure is the simplest one that preserves clear boundaries as the system grows.

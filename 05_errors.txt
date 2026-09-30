@@ -1,0 +1,28 @@
+PODCAST 05 — ERROR HANDLING AS A DESIGN PRACTICE
+Approximate runtime: 5 minutes
+
+Errors are not unusual events. In production software, failures are normal.
+
+A strong JavaScript system distinguishes expected failures from unexpected failures.
+
+An expected failure might be an invalid request, missing resource, expired session, or rejected business rule. These should usually be represented in a predictable way.
+
+Unexpected failures might indicate a programming bug, corrupted state, unavailable infrastructure, or an assumption that turned out to be false. These should be visible through logging, monitoring, and alerts.
+
+Avoid catch blocks that simply hide errors.
+
+Code such as catch(error) followed by nothing can turn a visible failure into silent corruption.
+
+When rethrowing, preserve useful context. Modern JavaScript supports error causes, allowing an error to retain the original cause while adding higher-level meaning.
+
+Create meaningful error types when they improve handling. For example, a NotFoundError can communicate intent better than a generic Error with a string message.
+
+Do not expose internal error details to untrusted users. A stack trace may be useful to engineers but dangerous or confusing in an API response.
+
+Log errors with structured context: operation, request identifier, relevant entity identifier, and the error itself. Be careful not to log passwords, access tokens, or other secrets.
+
+Errors should have an ownership model. Decide which layer is responsible for recovering, translating, retrying, or reporting a failure.
+
+Finally, test error paths. A system that only tests successful requests is incomplete.
+
+Good error handling does not mean catching every exception. It means designing failures so they are understandable, observable, and safely handled.

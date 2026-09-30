@@ -1,0 +1,24 @@
+PODCAST 17 — DOCUMENTATION THAT ENGINEERS ACTUALLY USE
+Approximate runtime: 5 minutes
+
+Documentation becomes valuable when it answers questions that code alone cannot answer.
+
+Start with the README. Explain what the project does, how to install it, how to run it, how to test it, and where important components live.
+
+Document decisions, not just syntax. Architecture decision records can explain why the team selected a database, messaging system, deployment approach, or architectural boundary.
+
+Comments should explain why unusual code exists. Comments that merely restate the code become stale easily.
+
+Public functions and libraries should document contracts, especially assumptions, side effects, errors, and examples.
+
+Keep documentation close to the code it describes. If an API changes, documentation should change in the same pull request.
+
+Examples are powerful. A small working example can communicate a library's intended usage better than several paragraphs.
+
+Document operational knowledge too. Engineers need to know how to deploy, roll back, rotate credentials, inspect logs, and recover from common failures.
+
+Avoid documenting every trivial implementation detail. The more unnecessary information documentation contains, the harder it becomes to find important information.
+
+Documentation is part of the product. It reduces onboarding time, prevents repeated questions, and preserves organizational knowledge.
+
+The best documentation is accurate, discoverable, concise, and maintained as part of normal engineering work.

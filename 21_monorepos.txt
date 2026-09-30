@@ -1,0 +1,26 @@
+PODCAST 21 — MONOREPOS AND SHARED JAVASCRIPT CODE
+Approximate runtime: 5 minutes
+
+As JavaScript organizations grow, they often face a choice between multiple repositories and a monorepo.
+
+A monorepo keeps multiple applications and packages in one repository. This can simplify shared code, coordinated changes, and dependency management.
+
+But a monorepo is not automatically better. It requires tooling and conventions that keep builds, tests, ownership, and dependency boundaries understandable.
+
+Shared packages should have clear responsibilities. Avoid creating one giant common package that every project imports.
+
+Dependency direction matters. A UI package should not accidentally depend on an application package.
+
+Use workspace tooling to manage packages and scripts consistently.
+
+Build systems can improve performance by running only the tasks affected by a change. Caching can reduce repeated work.
+
+Ownership is important. Shared code often becomes everybody's responsibility and therefore nobody's responsibility. Establish maintainers or ownership rules.
+
+Versioning strategy should match the repository's purpose. Some organizations publish packages independently; others deploy the repository as one system.
+
+The key risk is hidden coupling. If changing one utility forces unrelated applications to rebuild, test, or deploy unnecessarily, the repository may need stronger boundaries.
+
+A monorepo is a coordination mechanism, not an architecture by itself.
+
+Whether you use one repository or many, the engineering goal remains the same: clear ownership, controlled dependencies, and predictable changes.

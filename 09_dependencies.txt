@@ -1,0 +1,30 @@
+PODCAST 09 — MANAGING JAVASCRIPT DEPENDENCIES
+Approximate runtime: 5 minutes
+
+JavaScript projects can depend on hundreds or thousands of packages. Dependency management is therefore part of software engineering, not merely package installation.
+
+Every dependency introduces maintenance cost. Before adding one, ask whether the functionality is important enough to justify another package.
+
+Prefer well-maintained, appropriately scoped dependencies. Consider release history, documentation, licensing, security practices, and whether the package is actually needed.
+
+Lock dependency versions for reproducible builds. Lockfiles help ensure that developers and CI systems install compatible dependency graphs.
+
+Keep dependencies updated deliberately. Regular updates reduce the size of upgrade jumps and make security fixes easier to incorporate.
+
+Do not blindly upgrade everything in production without testing. Major versions can introduce breaking changes.
+
+Use automated dependency and security scanning where appropriate. But treat scanner output as a starting point for investigation rather than a substitute for engineering judgment.
+
+Understand transitive dependencies. A package you install can pull in many additional packages.
+
+Remove unused dependencies. They increase installation time, attack surface, and maintenance work.
+
+Be careful with post-install scripts and packages that execute code during installation or build processes.
+
+For applications, distinguish development dependencies from production dependencies correctly.
+
+Dependency management is ultimately about controlling your software supply chain.
+
+A small dependency with a clear purpose can be excellent engineering. A huge dependency graph created without thought can become technical debt.
+
+The goal is not zero dependencies. The goal is intentional dependencies.

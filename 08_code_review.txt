@@ -1,0 +1,30 @@
+PODCAST 08 — EFFECTIVE JAVASCRIPT CODE REVIEWS
+Approximate runtime: 5 minutes
+
+Code review is one of the most important collaborative practices in software engineering.
+
+A good review is not a search for stylistic imperfections. Automated tools should handle formatting, linting, and many mechanical checks.
+
+Reviewers should focus on correctness, architecture, maintainability, security, performance, and whether the code matches the intended behavior.
+
+Start by understanding the change. What problem is being solved? What assumptions does the implementation make?
+
+Look at the public interfaces first. Changes to APIs, database schemas, events, or shared modules can have consequences far beyond the edited file.
+
+Check error paths. Ask what happens when input is malformed, a dependency fails, or a request is repeated.
+
+Check concurrency and resource behavior in asynchronous code.
+
+Keep review comments specific and actionable. Explain why a concern matters and, when possible, suggest a direction rather than simply saying the code is wrong.
+
+Separate required changes from optional improvements. If every comment is presented as equally urgent, authors have difficulty understanding priorities.
+
+Reviewers should also avoid expanding the scope unnecessarily. A pull request that changes ten unrelated systems is difficult to reason about.
+
+Authors can make reviews easier by keeping commits focused, describing the motivation, and including tests.
+
+Psychological safety matters too. Critique the code and design, not the person.
+
+A useful review asks: will this code remain understandable and correct six months from now?
+
+Code review works best as shared engineering responsibility rather than a gatekeeping ritual.

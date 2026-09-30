@@ -1,0 +1,24 @@
+PODCAST 04 — ASYNCHRONOUS JAVASCRIPT WITHOUT CHAOS
+Approximate runtime: 5 minutes
+
+Modern JavaScript relies heavily on asynchronous operations: network requests, database calls, file systems, timers, and background jobs.
+
+The first best practice is to make asynchronous behavior obvious. Use async and await when it improves readability. Avoid unnecessarily mixing callbacks, promises, and async functions in the same flow.
+
+Remember that await does not make an operation synchronous. It pauses the current async function while the promise settles, allowing the JavaScript runtime to continue doing other work.
+
+One common performance mistake is awaiting independent operations sequentially.
+
+If two network calls do not depend on each other, Promise.all can often execute them concurrently. But concurrency should be intentional. If an API has strict rate limits, launching hundreds of requests simultaneously can be harmful.
+
+Handle rejected promises. An unhandled rejection can make failures difficult to diagnose and, depending on the environment and configuration, can affect process behavior.
+
+Use timeouts for operations that can hang. A network request without a timeout can consume resources far longer than expected.
+
+Cancellation is also important for long-running operations. AbortController provides a standard mechanism for canceling many modern JavaScript APIs.
+
+Think about partial failure. If five independent requests run together and one fails, should the entire operation fail? Promise.allSettled can be useful when every result matters independently.
+
+Async code becomes manageable when its contracts are explicit: what runs concurrently, what must happen first, how failure is represented, and how cancellation works.
+
+Treat asynchronous behavior as part of your architecture, not as a syntax detail.

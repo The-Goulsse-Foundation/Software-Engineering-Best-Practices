@@ -1,0 +1,28 @@
+PODCAST 15 — DATABASE INTERACTION IN JAVASCRIPT APPLICATIONS
+Approximate runtime: 5 minutes
+
+JavaScript applications often spend more time waiting on databases than executing JavaScript.
+
+Good database engineering therefore matters as much as application code.
+
+Keep database access behind clear boundaries. Business logic should not need to understand every SQL query or database-driver detail.
+
+Use parameterized queries or trusted query builders to prevent injection vulnerabilities.
+
+Think about transactions. If several changes must succeed together, a transaction can preserve consistency.
+
+Watch for the N plus one query problem. Loading a list and then issuing another query for every item can produce disastrous performance at scale.
+
+Measure queries. Use database query plans and application telemetry to identify slow operations.
+
+Indexes can dramatically improve reads, but indexes also consume storage and make writes more expensive. Add them based on actual access patterns.
+
+Be careful with connection management. Opening a new database connection for every request can be expensive. Use appropriate pooling mechanisms.
+
+Migrations should be versioned and repeatable. Production databases need a controlled history of schema changes.
+
+Consider failure modes. What happens when the database is unavailable? Does the application retry? If so, how many times and with what backoff?
+
+Do not treat the database as an unlimited source of truth that can be queried without cost. Data modeling, query design, indexing, caching, and transaction boundaries all affect system behavior.
+
+A strong JavaScript application treats database interaction as an engineering boundary with explicit performance and consistency properties.

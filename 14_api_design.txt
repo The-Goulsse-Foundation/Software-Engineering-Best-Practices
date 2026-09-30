@@ -1,0 +1,28 @@
+PODCAST 14 — DESIGNING JAVASCRIPT APIs
+Approximate runtime: 5 minutes
+
+An API is a contract between software components.
+
+Whether you are designing a REST endpoint, a JavaScript library, a GraphQL schema, or an internal service interface, clarity matters.
+
+Define inputs and outputs explicitly. Document required fields, optional fields, error behavior, authentication requirements, and important constraints.
+
+Use consistent naming and response conventions. Consumers should not need to memorize arbitrary differences between endpoints.
+
+Think carefully about compatibility. Once other systems depend on an interface, changing it can become expensive.
+
+For HTTP APIs, status codes should communicate broad outcome categories while response bodies provide useful details.
+
+Validation belongs at boundaries. Reject malformed input before it reaches deeper business logic.
+
+Pagination is important for collections. Returning an unlimited number of database records is usually unsafe.
+
+Consider idempotency for operations that may be retried. Distributed systems can produce duplicate requests, especially when clients cannot tell whether a previous request succeeded.
+
+Versioning strategies should be deliberate. Sometimes backward-compatible evolution is preferable to introducing versions everywhere.
+
+Library APIs need similar discipline. Avoid exposing internal implementation details that you may later need to change.
+
+An API is successful when consumers can use it correctly without understanding its internal implementation.
+
+Design contracts around stable concepts, document them, and test them.

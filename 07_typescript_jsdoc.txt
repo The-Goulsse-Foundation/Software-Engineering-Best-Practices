@@ -1,0 +1,26 @@
+PODCAST 07 — USING TYPES TO MAKE JAVASCRIPT SAFER
+Approximate runtime: 5 minutes
+
+JavaScript is dynamically typed, but that does not mean a project should communicate no type information.
+
+Types are a tool for making contracts explicit.
+
+For JavaScript projects, JSDoc can describe function parameters, return values, objects, and generic concepts. Editors and static analysis tools can then use those annotations to catch mistakes before runtime.
+
+TypeScript is another option. It adds a static type system and can be adopted incrementally in many projects.
+
+The important principle is not whether a team chooses JavaScript with JSDoc or TypeScript. It is that important data contracts should be explicit.
+
+Consider an API response. If engineers have to inspect runtime examples to discover whether userId is a string, number, or nullable value, the system is harder to use correctly.
+
+Types are particularly valuable at boundaries: HTTP APIs, database records, configuration, message queues, and library interfaces.
+
+Avoid making types unnecessarily complicated. A type system should communicate domain rules, not become a puzzle.
+
+Use discriminated unions or similarly explicit structures when an object can represent several states. This can make impossible states harder to create.
+
+Remember that static types do not replace runtime validation. Data arriving from a network or external file is still untrusted at runtime.
+
+The best type systems complement tests and validation. Types explain what code expects; runtime validation checks what actually arrived.
+
+Think of types as executable documentation for contracts that matter.
