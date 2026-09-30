@@ -1,0 +1,34 @@
+PODCAST 39 — ENGINEERING JAVASCRIPT LIBRARIES FOR OTHERS
+Approximate runtime: 5 minutes
+
+Writing an internal application is different from writing a library used by other engineers.
+
+A library has a public API, and every public decision can become a compatibility commitment.
+
+Keep the public surface area small.
+
+Document installation, supported environments, examples, API contracts, and known limitations.
+
+Avoid exposing internal data structures unless consumers genuinely need them.
+
+Semantic versioning can help communicate compatibility expectations when the project follows it consistently.
+
+Automated tests should cover public behavior.
+
+Build artifacts should be reproducible and compatible with the environments you claim to support.
+
+Be careful with dependencies. A library can impose its dependency graph on every consumer.
+
+Think about browser and Node.js compatibility if both environments matter.
+
+Provide useful errors without leaking internal details.
+
+Deprecate APIs deliberately. Give consumers a migration path before removing important functionality.
+
+Changelogs are valuable because users need to understand what changed between releases.
+
+Avoid breaking changes merely because an internal implementation became inconvenient.
+
+A library's design should prioritize stable concepts over internal convenience.
+
+The best library is not necessarily the one with the most features. It is one whose behavior consumers can understand and depend on.

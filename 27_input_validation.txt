@@ -1,0 +1,26 @@
+PODCAST 27 — INPUT VALIDATION AT JAVASCRIPT BOUNDARIES
+Approximate runtime: 5 minutes
+
+One of the most important rules in software engineering is simple: validate data at the boundary.
+
+The boundary might be an HTTP request, a command-line argument, a database result, a JSON file, a message queue, or a third-party API.
+
+Inside your system, code should be able to rely on clearly defined assumptions.
+
+For an HTTP request, validate required fields, types, ranges, lengths, formats, and relationships between fields.
+
+Validation should produce useful errors. Tell the caller what is wrong without exposing internal implementation details.
+
+Be careful with coercion. JavaScript can convert values in surprising ways. A value that looks numeric may arrive as a string, and empty values can behave differently depending on the operation.
+
+Schema validation libraries can make contracts explicit, but even without one, the architecture should have a clear validation boundary.
+
+Do not confuse validation with sanitization. Validation asks whether data conforms to expectations. Sanitization changes data to make it safer or more convenient.
+
+Do not rely exclusively on client-side validation. Browsers can be bypassed.
+
+Validate again on the server.
+
+The deeper lesson is that untrusted data should become trusted data only through an explicit transformation.
+
+Once the boundary is crossed, your internal code can be dramatically simpler because its assumptions are established.

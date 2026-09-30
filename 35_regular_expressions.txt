@@ -1,0 +1,32 @@
+PODCAST 35 — REGULAR EXPRESSIONS AND VALIDATION
+Approximate runtime: 5 minutes
+
+Regular expressions are powerful, but they are easy to make unreadable and difficult to maintain.
+
+Use regular expressions for problems they are good at: recognizing structured text patterns, extracting simple components, and performing controlled replacements.
+
+Do not assume a complicated regular expression is automatically better.
+
+For important validation rules, consider whether explicit parsing code would be clearer.
+
+Email addresses are a classic example. There is rarely value in attempting to encode every theoretical standard into one enormous expression.
+
+Keep regular expressions documented when their intent is not obvious.
+
+Test them with positive examples, negative examples, boundary cases, and unexpectedly large inputs.
+
+Be aware of performance problems caused by poorly designed expressions, particularly patterns with excessive backtracking.
+
+Never assume a regular expression alone is sufficient for security-sensitive parsing.
+
+When processing untrusted input, consider input length limits as well as pattern complexity.
+
+JavaScript provides useful regex features such as named capture groups, which can improve readability.
+
+Use flags intentionally. Global, multiline, Unicode, and case-insensitive behavior can change semantics.
+
+A regex should be understandable enough that another engineer can modify it safely.
+
+If a pattern requires a long explanation to understand, that may be evidence that a parser or dedicated validation library would be a better abstraction.
+
+The goal is not to use regex everywhere. It is to use it where it makes the code clearer and safer.

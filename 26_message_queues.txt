@@ -1,0 +1,30 @@
+PODCAST 26 — MESSAGE QUEUES IN JAVASCRIPT SYSTEMS
+Approximate runtime: 5 minutes
+
+Message queues allow work to be moved out of a synchronous request path.
+
+Imagine a user uploads a document. Instead of making the HTTP request wait while the document is processed, the application can place a job onto a queue and return quickly.
+
+The worker can then process that job asynchronously.
+
+This pattern improves responsiveness, but it introduces distributed-systems concerns.
+
+Jobs can fail. Workers can crash. Messages can be duplicated. Processing can take longer than expected.
+
+Design jobs to be idempotent when possible. If the same job executes twice, the final state should remain correct.
+
+Use retry policies carefully. Retrying a permanently invalid job thousands of times only creates more noise.
+
+Dead-letter queues can isolate messages that repeatedly fail.
+
+Include enough information in a message to process it reliably, but avoid copying huge datasets unnecessarily.
+
+Version message schemas. Producers and consumers may not deploy simultaneously.
+
+Observe queue depth and processing latency. A queue that grows continuously is a signal that consumers cannot keep up.
+
+Graceful shutdown is important for workers too. A worker should avoid abandoning a job halfway through a critical operation.
+
+Queues are not magic performance buttons. They are a tool for decoupling work and managing asynchronous processing.
+
+The engineering goal is predictable processing under failure, load, and deployment changes.

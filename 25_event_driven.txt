@@ -1,0 +1,24 @@
+PODCAST 25 — EVENT-DRIVEN JAVASCRIPT ARCHITECTURE
+Approximate runtime: 5 minutes
+
+Event-driven architecture is a natural fit for JavaScript because asynchronous execution is already central to the ecosystem.
+
+An event represents something that happened: an order was created, a user registered, a payment completed, or a file finished processing.
+
+Events can reduce direct coupling. Instead of one component calling five other components directly, it can publish an event and allow interested consumers to react.
+
+But events also introduce complexity. The producer may not know who consumes an event, which can make behavior harder to trace.
+
+Define event names and payloads carefully. Treat them as contracts.
+
+Prefer past-tense names such as user.registered or invoice.paid because events describe completed facts.
+
+Think about duplicate delivery. Consumers should often be idempotent because distributed systems can deliver the same message more than once.
+
+Think about ordering. If two events arrive out of order, can the consumer still behave correctly?
+
+Also decide what happens when a consumer fails. Retry policies, dead-letter queues, and monitoring may be necessary.
+
+Events are powerful, but they should solve a real coupling or scalability problem. A simple function call is often better when everything happens inside one process.
+
+Use event-driven architecture deliberately: clear contracts, observable flows, explicit failure behavior, and well-defined ownership.

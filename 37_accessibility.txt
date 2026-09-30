@@ -1,0 +1,34 @@
+PODCAST 37 — ACCESSIBILITY AS JAVASCRIPT ENGINEERING
+Approximate runtime: 5 minutes
+
+Accessibility is part of frontend software quality.
+
+JavaScript can create sophisticated interfaces, but it can also accidentally make basic interactions inaccessible.
+
+Start with semantic HTML. Use buttons for actions, links for navigation, headings for structure, and form controls for forms.
+
+Do not replace native behavior with custom elements unless there is a real reason.
+
+Keyboard interaction matters. Every interactive control should have an understandable keyboard experience.
+
+Focus management is especially important for dialogs, menus, and dynamically changing content.
+
+Screen readers depend on semantic structure and accessible names.
+
+When JavaScript changes content dynamically, consider whether important changes need to be communicated to assistive technologies.
+
+Color should not be the only way information is communicated.
+
+Form errors should be associated with their inputs and presented in a way users can discover.
+
+Automated accessibility tools are useful but incomplete. They cannot identify every usability or accessibility problem.
+
+Test keyboard navigation manually and, where possible, with assistive technologies.
+
+Accessibility should be part of component design rather than a final cleanup phase.
+
+A reusable component that has poor keyboard or screen-reader behavior spreads the problem throughout an application.
+
+Good JavaScript engineering includes building interfaces that work across different ways of interacting with software.
+
+Accessibility is not a special feature. It is part of the interface contract.

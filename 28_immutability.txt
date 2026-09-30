@@ -1,0 +1,28 @@
+PODCAST 28 — IMMUTABILITY AND JAVASCRIPT STATE
+Approximate runtime: 5 minutes
+
+Mutation is one of JavaScript's most useful features and one of its easiest sources of bugs.
+
+Consider an object shared by several parts of an application. If one function silently changes that object, another function may observe a value it never expected.
+
+Immutable programming reduces this category of problem by treating existing values as stable and creating new values when changes are needed.
+
+This does not mean every JavaScript program must copy every object. Excessive copying can also be expensive.
+
+The important idea is ownership.
+
+If a function receives an object and is expected to modify it, that contract should be clear. If callers expect the object to remain unchanged, mutation becomes dangerous.
+
+Modern JavaScript provides convenient syntax for creating updated objects and arrays.
+
+Be especially careful with shallow copies. Spreading an object copies its top-level properties but does not deeply clone nested objects.
+
+State management libraries often rely on predictable update patterns because change detection becomes easier.
+
+Immutability also improves reasoning in concurrent or asynchronous code because fewer operations can unexpectedly change shared state.
+
+But do not turn immutability into dogma. In performance-sensitive code, controlled mutation can be entirely reasonable.
+
+The engineering principle is predictable ownership.
+
+Know who can change a value, when it can change, and whether other code can observe that change.

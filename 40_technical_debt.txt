@@ -1,0 +1,32 @@
+PODCAST 40 — MANAGING TECHNICAL DEBT
+Approximate runtime: 5 minutes
+
+Technical debt is a useful metaphor for choices that make future changes more expensive.
+
+Not every shortcut is bad. Sometimes speed matters, and a simple implementation is the right decision.
+
+The problem occurs when debt becomes invisible.
+
+A useful way to manage technical debt is to connect it to concrete consequences.
+
+Does it slow development? Increase defects? Make deployments risky? Consume excessive infrastructure? Prevent a needed feature?
+
+Specific consequences make prioritization easier.
+
+Avoid vague statements such as 'the architecture is terrible.' Instead identify the dependency cycle, repeated manual step, unreliable test, or overloaded module that creates the cost.
+
+Some debt should be paid immediately because it creates unacceptable operational or security risk.
+
+Other debt can be managed gradually.
+
+Refactoring should usually be incremental. Large rewrites can take a long time while preserving old problems and introducing new ones.
+
+Keep architectural decisions documented so future engineers understand why debt exists.
+
+Do not confuse unfamiliar code with bad code. Complexity should be evaluated against actual requirements.
+
+A healthy engineering organization makes debt visible without turning it into blame.
+
+The goal is not a perfectly clean codebase. It is a system where complexity remains proportional to the value the software provides.
+
+Technical debt is manageable when engineers can see it, measure its consequences, and make deliberate tradeoffs.

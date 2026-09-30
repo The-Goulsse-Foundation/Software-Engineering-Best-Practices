@@ -1,0 +1,32 @@
+PODCAST 31 — FINDING MEMORY LEAKS IN JAVASCRIPT
+Approximate runtime: 5 minutes
+
+JavaScript has garbage collection, but that does not mean applications cannot leak memory.
+
+A memory leak happens when objects remain reachable even though the application no longer needs them.
+
+Common causes include accidental global references, long-lived caches, event listeners that are never removed, timers that continue running, and closures retaining large objects.
+
+In browser applications, a component can be visually removed while an event listener still references it.
+
+In Node.js, a global collection that continuously grows can eventually consume large amounts of memory.
+
+Use heap snapshots and profiling tools to investigate suspected leaks.
+
+Look for objects whose retained size keeps growing across repeated operations.
+
+Caching deserves special attention. A cache without a size or expiration strategy can become an unbounded memory store.
+
+Timers and intervals should have clear lifecycle ownership.
+
+Event listeners should be registered and removed according to the same lifecycle.
+
+Streams and buffers can also create memory pressure when producers generate data faster than consumers can process it.
+
+Do not guess. Measure memory over time under a repeatable workload.
+
+A useful test is to perform the same operation many times and observe whether memory returns near its previous baseline after garbage collection.
+
+Memory management is largely about lifecycle design.
+
+Every long-lived resource should have an answer to the question: when is this released?

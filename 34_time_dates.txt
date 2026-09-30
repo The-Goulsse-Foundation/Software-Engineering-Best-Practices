@@ -1,0 +1,32 @@
+PODCAST 34 — DATES, TIME ZONES, AND JAVASCRIPT
+Approximate runtime: 5 minutes
+
+Date and time bugs are among the most frustrating software bugs because they often work perfectly until a particular time zone, daylight-saving transition, or boundary date appears.
+
+First decide what concept you are representing.
+
+An instant in time is different from a calendar date. 'The meeting starts at 3 PM in New York' is different from 'the user's birthday is March 4.'
+
+Store and transmit instants in a consistent representation, commonly using UTC-based timestamps.
+
+Keep the original time zone when the business meaning requires it.
+
+Be careful when parsing date strings. Ambiguous formats can produce different interpretations across environments.
+
+Prefer standardized formats such as ISO 8601 when exchanging timestamps.
+
+Do not assume every day contains the same number of hours. Daylight-saving transitions can create unusual local-time behavior.
+
+Testing should include boundary dates and multiple time zones when time is important to the application.
+
+JavaScript's Date API has historically had confusing behavior, so teams should establish conventions and use modern date/time tooling where appropriate.
+
+Database timestamp types also matter. Understand whether a column represents an instant, a local timestamp, or a date.
+
+Logging should make time zones clear when diagnosing production issues.
+
+The central rule is to model time according to its meaning.
+
+If the business concept is an instant, treat it as an instant. If it is a calendar date, do not accidentally turn it into a timestamp.
+
+Time bugs usually begin as modeling bugs.

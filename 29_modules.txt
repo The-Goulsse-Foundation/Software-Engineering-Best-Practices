@@ -1,0 +1,26 @@
+PODCAST 29 — JAVASCRIPT MODULE DESIGN
+Approximate runtime: 5 minutes
+
+Modules are one of the main tools JavaScript provides for controlling complexity.
+
+A module should expose a small, intentional public interface.
+
+Prefer named exports that communicate what consumers are allowed to use. Avoid exporting internal implementation details simply because they are convenient.
+
+A module should have a coherent purpose. If one file contains authentication, billing calculations, image processing, and database utilities, the module boundary is probably not meaningful.
+
+Keep dependency direction understandable.
+
+If module A imports B and B imports A, you have a cycle. Some cycles can work, but they often indicate that responsibilities are tangled.
+
+Do not create giant barrel files that re-export everything without understanding their effects. They can obscure dependency relationships and sometimes complicate bundling.
+
+Think about side effects. Importing a module should ideally not unexpectedly modify global state, start network requests, or register behavior unless that is clearly part of the module's purpose.
+
+Pure utility modules are often easy to test and reuse.
+
+Module boundaries should reflect concepts that change together.
+
+When designing a module, ask three questions: What does it own? What does it expose? What does it depend on?
+
+Good modules make the rest of the codebase easier to understand because they hide irrelevant details while exposing stable concepts.

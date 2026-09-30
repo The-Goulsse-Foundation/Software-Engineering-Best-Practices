@@ -1,0 +1,36 @@
+PODCAST 38 — REAL-TIME JAVASCRIPT WITH WEBSOCKETS
+Approximate runtime: 5 minutes
+
+Real-time applications create a persistent communication channel between client and server.
+
+WebSockets can be useful for chat, collaborative interfaces, live dashboards, games, and other situations where updates need to arrive quickly.
+
+But a persistent connection creates lifecycle complexity.
+
+Connections can disappear. Clients can sleep. Networks can change. Proxies can interrupt connections.
+
+Design reconnect behavior deliberately.
+
+Do not reconnect aggressively forever. Use backoff and limits where appropriate.
+
+Messages should have explicit types and schemas.
+
+Think about authentication during connection establishment and what happens when credentials expire.
+
+Authorization still applies to individual actions. Establishing a WebSocket connection does not automatically mean the client can perform every operation.
+
+Consider duplicate messages and ordering.
+
+Large messages can consume substantial memory or bandwidth, so establish limits.
+
+Heartbeat mechanisms can help detect stale connections, depending on the infrastructure.
+
+The server should clean up connection state when clients disconnect.
+
+Observability matters. Track active connections, connection duration, message rates, errors, and reconnect behavior.
+
+Sometimes Server-Sent Events or ordinary HTTP polling is simpler and more appropriate.
+
+Real-time architecture is a tradeoff between immediacy, complexity, infrastructure, and failure handling.
+
+Use persistent connections when the product genuinely benefits from them, and design for disconnection as a normal state.

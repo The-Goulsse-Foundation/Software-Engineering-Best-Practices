@@ -1,0 +1,30 @@
+PODCAST 36 — STREAMS AND LARGE DATA IN NODE.JS
+Approximate runtime: 5 minutes
+
+Large data sets expose a fundamental engineering problem: memory is finite.
+
+If a Node.js application reads an enormous file completely into memory, memory usage can become proportional to the entire file.
+
+Streams provide another model.
+
+A stream processes data incrementally, allowing an application to handle data that is larger than available memory.
+
+Streams are useful for files, HTTP responses, compression, transformations, and other continuous data.
+
+Backpressure is critical. If a destination cannot consume data as quickly as the source produces it, the system needs to slow production rather than buffering indefinitely.
+
+Use the stream APIs appropriately and understand their error and completion behavior.
+
+Pipeline abstractions can help connect stages while propagating errors and cleanup.
+
+Streaming changes error handling. A failure can happen after part of a response has already been processed.
+
+Think about partial output and recovery.
+
+Streams also affect testing. Tests should include small inputs, empty inputs, large inputs, and failures in intermediate stages.
+
+Do not use streams merely because they sound more scalable. For a tiny configuration file, reading it directly may be simpler.
+
+The correct approach depends on the data size, latency requirements, memory budget, and complexity.
+
+Streams are an example of a broader engineering principle: process data according to resource constraints rather than assuming resources are unlimited.

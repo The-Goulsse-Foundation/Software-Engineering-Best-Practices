@@ -1,0 +1,30 @@
+PODCAST 30 — FRONTEND PERFORMANCE ENGINEERING
+Approximate runtime: 5 minutes
+
+Browser performance is about more than making JavaScript execute quickly.
+
+Users experience loading, rendering, interaction, network latency, layout, and visual stability.
+
+Start with measurement. Browser developer tools can show network requests, JavaScript execution, rendering activity, memory, and performance timelines.
+
+Reduce unnecessary work. Sending less JavaScript can matter more than optimizing a tiny function.
+
+Code splitting can delay loading features until they are actually needed.
+
+Images are another major source of page weight. Use appropriate formats, dimensions, compression, and lazy loading where appropriate.
+
+Avoid unnecessary re-renders in UI frameworks. But do not add memoization everywhere without measuring; caching has complexity and memory costs.
+
+Large lists may require virtualization so the browser does not render thousands of off-screen elements.
+
+Network requests should be intentional. Duplicate requests and overly large payloads can dominate the user experience.
+
+Main-thread work matters because long JavaScript tasks can delay input and rendering.
+
+Performance budgets can make expectations concrete. A team might establish limits for bundle size, startup time, or important interaction latency.
+
+Most importantly, measure representative experiences.
+
+A fast benchmark on a developer laptop does not necessarily represent a slower device or network.
+
+Frontend performance engineering is user-experience engineering. Optimize the work users actually experience, then verify the improvement with measurement.

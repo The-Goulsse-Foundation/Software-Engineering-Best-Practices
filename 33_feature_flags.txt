@@ -1,0 +1,34 @@
+PODCAST 33 — FEATURE FLAGS WITHOUT PERMANENT COMPLEXITY
+Approximate runtime: 5 minutes
+
+Feature flags let teams change behavior without deploying completely new code paths.
+
+They can support gradual releases, experiments, emergency disablement, and different behavior for different environments.
+
+But feature flags create conditional complexity.
+
+Every flag adds another possible state. If five flags interact, the number of combinations can grow quickly.
+
+Therefore, flags should have owners and lifetimes.
+
+When a temporary rollout is complete, remove the flag and the old code path.
+
+Use descriptive names. A flag should communicate what behavior it controls.
+
+Separate operational flags from product experiments. An emergency kill switch has different lifecycle requirements from a temporary UI experiment.
+
+Be careful about authorization. A feature flag should not be the only protection for sensitive permissions unless its security model is explicitly designed for that purpose.
+
+Test both sides of important flags.
+
+For gradual rollouts, observe metrics before expanding exposure.
+
+Document who can change a production flag and whether changes are audited.
+
+Avoid deeply nesting feature flags inside business logic. Centralize decisions where possible.
+
+The purpose of a flag is to make a change safer or more flexible.
+
+If a flag remains in the codebase for years, it has stopped being temporary configuration and become permanent architecture.
+
+Manage its lifecycle accordingly.

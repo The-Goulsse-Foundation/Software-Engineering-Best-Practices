@@ -1,0 +1,32 @@
+PODCAST 32 — RATE LIMITING AND RESOURCE PROTECTION
+Approximate runtime: 5 minutes
+
+Every production service has finite resources.
+
+Databases have connection limits. APIs have quotas. CPU and memory are finite. External providers may restrict request volume.
+
+Rate limiting protects systems from excessive demand.
+
+At the API boundary, limits can be applied per user, credential, IP address, API key, or another appropriate identity.
+
+A rate limit should communicate what happens when the limit is exceeded.
+
+But rate limiting alone is not enough. Request size limits prevent a client from sending unexpectedly large payloads.
+
+Timeouts prevent resources from being held forever.
+
+Concurrency limits prevent a single client or operation from consuming every available worker.
+
+Queues can smooth bursts when work does not need to complete synchronously.
+
+Backpressure is especially important for streaming systems. If consumers cannot keep up, the system needs a defined strategy rather than unlimited buffering.
+
+Retries can accidentally make overload worse. If every client retries immediately after a failure, the service can experience a retry storm.
+
+Use exponential backoff and jitter when appropriate.
+
+Protection mechanisms should be observable. Monitor rejected requests, queue depth, latency, and resource utilization.
+
+The goal is graceful degradation.
+
+A well-designed service does not promise unlimited work. It establishes resource boundaries and behaves predictably when demand exceeds capacity.
